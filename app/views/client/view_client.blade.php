@@ -51,13 +51,8 @@
                   </tr>
                 </table>
               </td>
-              <td>{{ $item->name }}</td>
-              <td>{{ $item->email }}</td>
-              <td>{{ $item->nit }}</td>    
+              <td>{{ $item->name }}</td>   
               <td>{{ $item->telephone }}</td>
-              <td>{{ $item->country }}</td>
-              <td>{{ $item->department }}</td>
-              <td>{{ $item->city }}</td>
               <td>{{ $item->address }}</td>
               <td>{{ $item->enable }}</td>
             </tr>

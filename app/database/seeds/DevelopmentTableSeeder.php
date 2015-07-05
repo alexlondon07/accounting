@@ -39,8 +39,8 @@ class DevelopmentTableSeeder extends Seeder {
             ]);
             $client = Client::create([
                         'name' => $faker->company,
-                        'email' => $faker->email,
-                        'nit' => "8" . $faker->numberBetween(19999999, 99999999)
+                        'address' => 'Caucasia Antioquia',
+                        'enable' => 'SI',
             ]);
     }
 }

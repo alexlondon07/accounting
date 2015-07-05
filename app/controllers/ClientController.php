@@ -36,23 +36,8 @@ class ClientController extends \BaseController {
         if (Input::get('name')) {
             $client->name = Input::get('name');
         }
-        if (Input::get('email')) {
-            $client->email = Input::get('email');
-        }
-        if (Input::get('nit')) {
-            $client->nit = Input::get('nit');
-        }
         if (Input::get('telephone')) {
             $client->telephone = Input::get('telephone');
-        }
-        if (Input::get('country')) {
-            $client->country = Input::get('country');
-        }
-        if (Input::get('department')) {
-            $client->department = Input::get('department');
-        }
-        if (Input::get('city')) {
-            $client->city = Input::get('city');
         }
         if (Input::get('address')) {
             $client->address = Input::get('address');
@@ -99,23 +84,8 @@ class ClientController extends \BaseController {
         if (Input::get('name')) {
             $client->name = Input::get('name');
         }
-        if (Input::get('email')) {
-            $client->email = Input::get('email');
-        }
-        if (Input::get('nit')) {
-            $client->nit = Input::get('nit');
-        }
         if (Input::get('telephone')) {
             $client->telephone = Input::get('telephone');
-        }
-        if (Input::get('country')) {
-            $client->country = Input::get('country');
-        }
-        if (Input::get('department')) {
-            $client->department = Input::get('department');
-        }
-        if (Input::get('city')) {
-            $client->city = Input::get('city');
         }
         if (Input::get('address')) {
             $client->address = Input::get('address');
@@ -152,12 +122,7 @@ class ClientController extends \BaseController {
                         $p = $arrparam[0];
                         $q->whereNested(function($q) use ($p) {
                             $q->where('name', 'LIKE', '%' . $p . '%');
-                            $q->orwhere('email', 'LIKE', '%' . $p . '%');
-                            $q->orwhere('nit', 'LIKE', '%' . $p . '%');
                             $q->orwhere('telephone', 'LIKE', '%' . $p . '%');
-                            $q->orwhere('country', 'LIKE', '%' . $p . '%');
-                            $q->orwhere('department', 'LIKE', '%' . $p . '%');
-                            $q->orwhere('city', 'LIKE', '%' . $p . '%');
                             $q->orwhere('address', 'LIKE', '%' . $p . '%');
                         });
                         $c = count($arrparam);
@@ -168,12 +133,7 @@ class ClientController extends \BaseController {
                                 $p = $arrparam[$i];
                                 $q->whereNested(function($q) use ($p) {
                                     $q->where('name', 'LIKE', '%' . $p . '%');
-                                    $q->orwhere('email', 'LIKE', '%' . $p . '%');
-                                    $q->orwhere('nit', 'LIKE', '%' . $p . '%');
                                     $q->orwhere('telephone', 'LIKE', '%' . $p . '%');
-                                    $q->orwhere('country', 'LIKE', '%' . $p . '%');
-                                    $q->orwhere('department', 'LIKE', '%' . $p . '%');
-                                    $q->orwhere('city', 'LIKE', '%' . $p . '%');
                                     $q->orwhere('address', 'LIKE', '%' . $p . '%');
                                 }, 'OR');
                             }
