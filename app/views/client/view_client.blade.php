@@ -27,12 +27,7 @@
               <tr>
                 <th>&nbsp;</th>
                 <th>Nombre</th>
-                <th>Email</th>
-                <th>Nit</th>
                 <th>Telefono</th>
-                <th>Pais</th>
-                <th>Departamento</th>
-                <th>Ciudad</th>
                 <th>Direccion</th>
                 <th>Habilitado</th>
               </tr>

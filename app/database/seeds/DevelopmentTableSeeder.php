@@ -8,7 +8,7 @@ class DevelopmentTableSeeder extends Seeder {
         //DB::statement("INSERT INTO lor_lecture (title, author, year, publisher, content, created_at, updated_at, deleted_at) VALUES ('El origen de las especies', 'Charles Darwin', '1859', 'Dominio publico', 'temas vivos.', NOW(),NOW(), NULL);");
         $user = User::create(array(
                     'profile' => 'super_admin',
-                    'firstname' => 'admin',
+                    'firstname' => 'Alexander Andres Londono Espejo',
                     'username' => 'admin',
                     'email' => 'admin@admin.com',
                     'password' => Hash::make('admin'),
@@ -27,7 +27,7 @@ class DevelopmentTableSeeder extends Seeder {
         $user->roles()->attach(12);
 
         $faker = Faker\Factory::create();
-        $count_client = 10;
+        $count_client = 5;
         foreach (range(1, $count_client) as $index) {
             $user = User::create([
                         'firstname' => $faker->firstName,
