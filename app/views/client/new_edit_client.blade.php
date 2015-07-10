@@ -20,24 +20,24 @@
             <div class="form-group">
                 {{Form::label('name', 'Nombre', array('class' => 'control-label col-sm-2'))}}
                 <div class="col-sm-4">
-                    {{Form::text('name',null, array('class' => 'form-control'))}}
+                    {{Form::text('name',null, array('class' => 'form-control', 'required' => 'required'))}}
                 </div>
             </div>
             <div class="form-group">
                 {{Form::label('telephone', 'Telefono', array('class' => 'control-label col-sm-2'))}}
                 <div class="col-sm-4">
                     {{Form::text('telephone',null, array('class' => 'form-control'))}}
-                </div>                
-            </div>          
+                </div>
+            </div>
             <div class="form-group">
                 {{Form::label('address', 'Direccion', array('class' => 'control-label col-sm-2'))}}
-                <div class="col-sm-4"> 
+                <div class="col-sm-4">
                     {{Form::text('address',null, array('class' => 'form-control'))}}
-                </div> 
-            </div> 
+                </div>
+            </div>
             <div class="form-group">
                 {{Form::label('enable', 'Habilitado', array('class' => 'control-label col-sm-2'))}}
-                <div class="col-sm-4"> 
+                <div class="col-sm-4">
                     {{ Form::select('enable',array('SI'=>'SI','NO'=>'NO'), null, array('class'=>'form-control')) }}
                 </div>
             </div>
@@ -72,14 +72,14 @@
             {{Form::label('telephone', 'Telefono', array('class' => 'control-label col-sm-2'))}}
             <div class="col-sm-4">
                 {{Form::label('telephone',$client->telephone, array('class' => 'form-control'))}}
-            </div>          
-        </div>          
+            </div>
+        </div>
         <div class="form-group">
             {{Form::label('address', 'Direccion', array('class' => 'control-label col-sm-2'))}}
             <div class="col-sm-4">
                 {{Form::label('address',$client->address, array('class' => 'form-control'))}}
-            </div> 
-        </div> 
+            </div>
+        </div>
         <div class="form-group">
             {{Form::label('enable', 'Habilitado', array('class' => 'control-label col-sm-2'))}}
             <div class="col-sm-4">

@@ -11,7 +11,7 @@
             <h1 class="page-header">Proveedores</h1>
             <div class="controls form-inline">
                 @if(Auth::user()->hasRole('3.1'))
-                <a href="{{ URL::to('/') }}/admin/provider/create" class="btn btn-info">Crear proveedor</a>
+                <a href="{{ URL::to('/') }}/admin/provider/create" class="btn btn-primary">Crear proveedor</a>
                 @endif
                 <div class="input-group">
                     {{ Form::open(array('url' => 'admin/providers/search', 'id' => 'search_form', 'method'=>'GET', 'class'=>'control-group')) }}

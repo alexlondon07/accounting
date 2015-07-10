@@ -7,17 +7,20 @@
 <div class="container-fluid">
   <div class="row">
     <div class="main">
-      <h1 class="page-header">Clientes</h1>
-      <div class="controls form-inline">
-        @if(Auth::user()->hasRole('1.1'))
-        <a href="{{ URL::to('/') }}/admin/client/create" class="btn btn-primary">Crear cliente</a>
-        @endif
-        <div class="input-group">
-          {{ Form::open(array('url' => 'admin/clients/search', 'id' => 'search_form', 'method'=>'GET', 'class'=>'control-group')) }}
-          <input id="search" placeholder="Buscar..." required="true" name="search" type="text" value="@if(isset($search)){{ $search }}@endif" />
-          <button class="btn btn-default"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
-          <a href="{{URL::to('/')}}/admin/client" title="Refrescar Clientes"class="btn btn-default"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span></a>
-          {{ Form::close() }}
+      <h1 class="page-header">Clientes </h1>
+        <div class="controls form-inline">
+            @if(Auth::user()->hasRole('1.1'))
+            <a href="{{ URL::to('/') }}/admin/client/create" class="btn btn-primary">Crear cliente</a>
+            @endif
+            <div class="input-group">
+              {{ Form::open(array('url' => 'admin/clients/search', 'id' => 'search_form', 'method'=>'GET', 'class'=>'control-group')) }}
+                <div class="form-group">
+                    <input id="search"  name="search"  type="text" required="true" class="form-control" placeholder="Buscar..." value="@if(isset($search)){{ $search }}@endif" >
+                </div>
+              <button class="btn btn-default"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+              <a href="{{URL::to('/')}}/admin/client" title="Refrescar Clientes"class="btn btn-default"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span></a>
+              {{ Form::close() }}
+          </div>
         </div>
         <div class="table-responsive">
           @if (count($items) > 0)
@@ -51,7 +54,7 @@
                   </tr>
                 </table>
               </td>
-              <td>{{ $item->name }}</td>   
+              <td>{{ $item->name }}</td>
               <td>{{ $item->telephone }}</td>
               <td>{{ $item->address }}</td>
               <td>{{ $item->enable }}</td>
