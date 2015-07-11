@@ -11,12 +11,15 @@
             <h1 class="page-header">Proveedores</h1>
             <div class="controls form-inline">
                 @if(Auth::user()->hasRole('3.1'))
-                <a href="{{ URL::to('/') }}/admin/provider/create" class="btn btn-primary">Crear proveedor</a>
+                <a href="{{ URL::to('/') }}/admin/provider/create" class="btn btn-primary pull-right">Crear proveedor</a>
                 @endif
                 <div class="input-group">
                     {{ Form::open(array('url' => 'admin/providers/search', 'id' => 'search_form', 'method'=>'GET', 'class'=>'control-group')) }}
-                    <input id="search" placeholder="Buscar..." required="true" name="search" type="text" value="@if(isset($search)){{ $search }}@endif" />
+                    <div class="form-group">
+                        <input id="search" placeholder="Buscar..." required="true" name="search" type="text" class="form-control" value="@if(isset($search)){{ $search }}@endif" />
+                    </div>
                     <button class="btn btn-default"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                    <a href="{{URL::to('/')}}/admin/provider" title="Refrescar Proveedores"class="btn btn-default"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span></a>
                     {{ Form::close() }}
                 </div>
             </div>

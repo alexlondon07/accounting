@@ -38,7 +38,13 @@
             <div class="form-group">
                 {{Form::label('description', 'Descripcion', array('class' => 'control-label col-sm-2'))}}
                 <div class="col-sm-4">
-                    {{Form::textarea('description',null, array('class' => 'form-control', 'required' => 'required' , 'size' => '30x5'))}}
+                    {{Form::textarea('description',null, array('class' => 'form-control', 'required' => 'required' , 'size' => '20x4'))}}
+                </div>
+            </div>
+            <div class="form-group">
+                {{Form::label('date_cost', 'Fecha', array('class' => 'control-label col-sm-2'))}}
+                <div class="col-sm-4">
+                    {{Form::text('date_cost',null, array('class' => 'form-control'))}}
                 </div>
             </div>
             <div class="form-group">
@@ -98,6 +104,12 @@
                 {{Form::label('description',$cost->description, array('class' => 'form-control'))}}
             </div>
         </div>
+        <div class="form-group">
+                {{Form::label('date_cost', 'Fecha', array('class' => 'control-label col-sm-2'))}}
+                <div class="col-sm-4">
+                {{Form::label('date_cost',$cost->date_cost, array('class' => 'form-control'))}}
+                </div>
+            </div>
         <div class="form-group">
             {{Form::label('resposible', 'Responsable', array('class' => 'control-label col-sm-2'))}}
             <div class="col-sm-4">
