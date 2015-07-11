@@ -10,7 +10,7 @@
             <h1 class="page-header">Usuarios</h1>
             <div class="controls form-inline">
                 @if(Auth::user()->hasRole('2.1'))
-                    <a href="{{ URL::to('/') }}/admin/client/create" class="btn btn-primary">Crear cliente</a>
+                    <a href="{{ URL::to('/') }}/admin/client/create" class="btn btn-primary pull-right">Ingresar cliente</a>
                 @endif
                 <div class="input-group">
                   {{ Form::open(array('url' => 'admin/users/search', 'id' => 'search_form', 'method'=>'GET', 'class'=>'control-group')) }}

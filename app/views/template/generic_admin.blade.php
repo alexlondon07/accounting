@@ -43,7 +43,7 @@
                         <li><a href="{{URL::to('/')}}/admin/provider" title="Proveedor"><img src="{{URL::to('/')}}/images/proveedores.png" height="50"/></a></li>
                         @endif
                         @if(Auth::user()->hasRole('4'))
-                        <li><a href="{{URL::to('/')}}/admin/location" title="Ubicaciones"><img src="{{URL::to('/')}}/images/ubicaciones.png" height="50"/></a></li>
+                        <li><a href="{{URL::to('/')}}/admin/cost" title="Costos"><img src="{{URL::to('/')}}/images/ubicaciones.png" height="50"/></a></li>
                         @endif
                         @if(Auth::user()->hasRole('5'))
                         <li><a href="{{URL::to('/')}}/admin/machine" title="Maquinas"><img src="{{URL::to('/')}}/images/maquinas.png" height="50"/></a></li>
