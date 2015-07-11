@@ -46,7 +46,7 @@
                         <li><a href="{{URL::to('/')}}/admin/cost" title="Costos"><img src="{{URL::to('/')}}/images/ubicaciones.png" height="50"/></a></li>
                         @endif
                         @if(Auth::user()->hasRole('5'))
-                        <li><a href="{{URL::to('/')}}/admin/machine" title="Maquinas"><img src="{{URL::to('/')}}/images/maquinas.png" height="50"/></a></li>
+                        <li><a href="{{URL::to('/')}}/admin/category" title="Categoria"><img src="{{URL::to('/')}}/images/maquinas.png" height="50"/></a></li>
                         @endif
                         @if(Auth::user()->hasRole('6'))
                         <li><a href="{{URL::to('/')}}/admin/supply" title="Insumos"><img src="{{URL::to('/')}}/images/insumos.png" height="50"/></a></li>
