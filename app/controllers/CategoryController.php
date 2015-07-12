@@ -67,7 +67,7 @@ class CategoryController extends \BaseController {
     public function edit($id) {
         $category = Category::find($id);
         $show = false;
-        return View::make('category.new_edit_client', compact('category', 'show'));
+        return View::make('category.new_edit_category', compact('category', 'show'));
     }
 
     /**

@@ -10,11 +10,11 @@
         <div class="panel-body">
             @if($cost->id)
             @if(Auth::user()->hasRole('4.2'))
-            {{ Form::model($cost, ['id' => 'form_client', 'route' => ['admin.cost.update', $cost->id], 'method' => 'put', 'role'=>'form', 'class'=>'form-horizontal']) }}
+            {{ Form::model($cost, ['id' => 'form_cost', 'route' => ['admin.cost.update', $cost->id], 'method' => 'put', 'role'=>'form', 'class'=>'form-horizontal']) }}
             @endif
             @else
             @if(Auth::user()->hasRole('4.1'))
-            {{ Form::model($cost, ['id' => 'form_client', 'route' => 'admin.cost.store', 'role'=>'form', 'class'=>'form-horizontal']) }}
+            {{ Form::model($cost, ['id' => 'form_cost', 'route' => 'admin.cost.store', 'role'=>'form', 'class'=>'form-horizontal']) }}
             @endif
             @endif
             <div class="form-group">

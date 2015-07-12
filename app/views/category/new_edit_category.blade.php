@@ -26,7 +26,7 @@
             <div class="form-group">
                 {{Form::label('description', 'Descripcion', array('class' => 'control-label col-sm-2'))}}
                 <div class="col-sm-4">
-                    {{Form::text('description',null, array('class' => 'form-control'))}}
+                    {{Form::textarea('description',null, array('class' => 'form-control', 'size' => '20x4'))}}
                 </div>
             </div>
             <div class="form-group">
@@ -65,7 +65,7 @@
         <div class="form-group">
             {{Form::label('description', 'Descripcion', array('class' => 'control-label col-sm-2'))}}
             <div class="col-sm-4">
-                {{Form::label('description',$category->description, array('class' => 'form-control'))}}
+                {{Form::textarea('description',$category->description, array('class' => 'form-control', 'size' => '20x4'))}}
             </div>
         </div>
         <div class="form-group">
