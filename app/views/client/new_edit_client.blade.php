@@ -62,6 +62,7 @@
     </div>
     <div class="panel-body">
         {{ Form::open(array('role'=>'form', 'class'=>'form-horizontal'))}}
+        @if (!empty($client))
         <div class="form-group">
             {{Form::label('name', 'Nombre', array('class' => 'control-label col-sm-2'))}}
             <div class="col-sm-4">
@@ -69,13 +70,13 @@
             </div>
         </div>
         <div class="form-group">
-            {{Form::label('telephone', 'Telefono', array('class' => 'control-label col-sm-2'))}}
+            {{Form::label('telephone', 'Teléfono', array('class' => 'control-label col-sm-2'))}}
             <div class="col-sm-4">
                 {{Form::label('telephone',$client->telephone, array('class' => 'form-control'))}}
             </div>
         </div>
         <div class="form-group">
-            {{Form::label('address', 'Direccion', array('class' => 'control-label col-sm-2'))}}
+            {{Form::label('address', 'Dirección', array('class' => 'control-label col-sm-2'))}}
             <div class="col-sm-4">
                 {{Form::label('address',$client->address, array('class' => 'form-control'))}}
             </div>
@@ -86,7 +87,9 @@
                 {{ Form::select('enable',array('SI'=>'SI','NO'=>'NO'), $client->enable, array('class'=>'form-control','disabled' => 'true')) }}
             </div>
         </div>
-
+        @else
+        <p class="bg-info">No existe información para éste cliente</p>
+        @endif
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-4">
                 <a href="{{URL::to('/')}}/admin/client" class="btn btn-info">Volver</a>
