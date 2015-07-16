@@ -32,6 +32,23 @@ class ClientController extends \BaseController {
      * @return Response
      */
     public function store() {
+        // se define la validacion de los campos
+        $rules = array(
+            'name' => 'required|max:60',
+            'telephone' => 'required|numeric',
+            );
+
+        $messages = array(
+            'name.required' => 'El campo nombre es requerido.',
+            'telephone.telephone' => 'El campo telefono es requerido',
+            );
+        // Se validan los datos ingresados segun las reglas definidas
+        $validator = Validator::make(Input::all(),, $rules, $messages);
+        if ($validator->fails()) {
+            return redirect()->back()->withInput()->withErrors($validator->errors());
+        }
+
+
         $client = new Client;
         if (Input::get('name')) {
             $client->name = Input::get('name');
