@@ -1,0 +1,159 @@
+<?php $__env->startSection('body_content'); ?>
+<?php if(!$show): ?>
+<div class="container-fluid">
+    <hr>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title"><?php if($client->id): ?> Editar <?php else: ?> Crear <?php endif; ?></h3>
+        </div>
+        <div class="panel-body">
+            <?php if($client->id): ?>
+            <?php echo Form::model($client, ['route' => ['admin.client.update', $client->id], 'method' => 'put']); ?>
+
+            <?php else: ?>
+            <?php echo Form::model($client, ['route' => 'admin.client.store']); ?>
+
+            <?php endif; ?>
+            <div class="form-group">
+                <?php echo Form::label('name', 'Nombre'); ?>
+
+                <?php echo Form::text('name',null, array('class' => 'form-control')); ?>
+
+            </div>
+            <div class="form-group">
+                <?php echo Form::label('email', 'Email'); ?>
+
+                <?php echo Form::email('email',null, array('class' => 'form-control')); ?>
+
+            </div>
+            <div class="form-group">
+                <?php echo Form::label('nit', 'Nit'); ?>
+
+                <?php echo Form::text('nit',null, array('class' => 'form-control')); ?>
+
+            </div>  
+            <div class="form-group">
+                <?php echo Form::label('telephone', 'Telefono'); ?>
+
+                <?php echo Form::text('telephone',null, array('class' => 'form-control')); ?>
+
+            </div>          
+            <div class="form-group">
+                <?php echo Form::label('country', 'Pais'); ?>
+
+                <?php echo Form::text('country',null, array('class' => 'form-control')); ?>
+
+            </div> 
+            <div class="form-group">
+                <?php echo Form::label('department', 'Departamento'); ?>
+
+                <?php echo Form::text('department',null, array('class' => 'form-control')); ?>
+
+            </div>   
+            <div class="form-group">
+                <?php echo Form::label('city', 'Ciudad'); ?>
+
+                <?php echo Form::text('city',null, array('class' => 'form-control')); ?>
+
+            </div> 
+            <div class="form-group">
+                <?php echo Form::label('address', 'Direccion'); ?>
+
+                <?php echo Form::text('address',null, array('class' => 'form-control')); ?>
+
+            </div> 
+            <div class="form-group">
+                <?php echo Form::label('enable', 'Habilitado'); ?>
+
+                <?php echo Form::text('enable',null, array('class' => 'form-control')); ?>
+
+            </div>
+            <div class="form-group">
+                <?php echo Form::submit('Guardar', array('class' =>'btn btn-primary')); ?>
+
+            </div>
+            <div class="form-group">
+                <a href="<?php echo URL::to('/'); ?>/admin/client" class="btn btn-info">Cancelar</a>
+            </div>
+            <?php echo Form::close(); ?>
+
+        </div>
+    </div>
+
+</div>
+<?php else: ?>
+<!-- Contenido de la visualizacion del item -->
+<hr>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Detalles</h3>
+    </div>
+    <div class="panel-body">
+        <?php echo Form::open(); ?>
+
+            <div class="form-group">
+                <?php echo Form::label('name', 'Nombre'); ?>
+
+                <?php echo Form::label('name',$client->name, array('class' => 'form-control')); ?>
+
+            </div>
+            <div class="form-group">
+                <?php echo Form::label('email', 'Email'); ?>
+
+                <?php echo Form::label('firstname',$client->firstname, array('class' => 'form-control')); ?>
+
+            </div>
+            <div class="form-group">
+                <?php echo Form::label('nit', 'Nit'); ?>
+
+                <?php echo Form::label('nit',$client->nit, array('class' => 'form-control')); ?>
+
+            </div>  
+            <div class="form-group">
+                <?php echo Form::label('telephone', 'Telefono'); ?>
+
+                <?php echo Form::label('telephone',$client->telephone, array('class' => 'form-control')); ?>
+
+            </div>          
+            <div class="form-group">
+                <?php echo Form::label('country', 'Pais'); ?>
+
+                <?php echo Form::label('country',$client->country, array('class' => 'form-control')); ?>
+
+            </div> 
+            <div class="form-group">
+                <?php echo Form::label('department', 'Departamento'); ?>
+
+                <?php echo Form::label('department',$client->departmentd, array('class' => 'form-control')); ?>
+
+            </div>   
+            <div class="form-group">
+                <?php echo Form::label('city', 'Ciudad'); ?>
+
+                <?php echo Form::label('city',$client->city, array('class' => 'form-control')); ?>
+
+            </div> 
+            <div class="form-group">
+                <?php echo Form::label('address', 'Direccion'); ?>
+
+                <?php echo Form::label('address',$client->address, array('class' => 'form-control')); ?>
+
+            </div> 
+            <div class="form-group">
+                <?php echo Form::label('enable', 'Habilitado'); ?>
+
+                <?php echo Form::label('enable',$client->enable, array('class' => 'form-control')); ?>
+
+            </div>
+
+        <div class="form-group">
+            <a href="<?php echo URL::to('/'); ?>/admin/client" class="btn btn-info">Volver</a>
+        </div>
+        <?php echo Form::close(); ?>
+
+    </div>
+</div>
+<?php endif; ?>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('template.generic_admin', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -1,0 +1,78 @@
+<?php $__env->startSection('head_content'); ?>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('body_content'); ?>
+<div class="container-fluid">
+  <div class="row">
+    <div class="main">
+      <h1 class="page-header">Clientes</h1>
+      <a href="<?php echo URL::to('/'); ?>/admin/client/create">Crear cliente</a>
+      <div class="table-responsive">
+        <?php if(count($items) > 0): ?>
+        <h4><?php echo $items->getTotal(); ?> resultados </h4>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>&nbsp;</th>
+              <th>Nombre</th>
+              <th>Email</th>
+              <th>Nit</th>
+              <th>Telefono</th>
+              <th>Pais</th>
+              <th>Departamento</th>
+              <th>Ciudad</th>
+              <th>Direccion</th>
+              <th>Habilitado</th>
+              <th>Fecha</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php foreach($items as $item): ?>
+            <tr>
+              <td style="width: 150px !important">
+               <table>
+                <tr>
+                  <a title="Detalles" href="client/<?php echo $item->id; ?>"><span class="glyphicon glyphicon-eye-open btn btn-default btn-xs"></span></a>
+                  <a title="Editar" href="client/<?php echo $item->id; ?>/edit"><span class="glyphicon glyphicon-edit btn btn-default btn-xs"></span></a>
+                  <?php echo Form::open(['action' => ['ClientController@destroy', $item->id], 'method' => 'delete']); ?>
+
+                  <button title="Eliminar" type="submit" onclick="return util.confirmDelete(this);" class="glyphicon glyphicon-trash btn btn-default btn-xs"></button>
+                  <?php echo Form::close(); ?>
+
+                </tr>
+              </table>
+
+            </td>
+            <td><?php echo $item->name; ?></td>
+            <td><?php echo $item->email; ?></td>
+            <td><?php echo $item->nit; ?></td>    
+            <td><?php echo $item->telephone; ?></td>
+            <td><?php echo $item->country; ?></td>
+            <td><?php echo $item->department; ?></td>
+            <td><?php echo $item->city; ?></td>
+            <td><?php echo $item->address; ?></td>
+            <td><?php echo $item->enable; ?></td>
+            <td><?php echo $item->created_at; ?></td>
+          </tr>
+          <?php endforeach; ?>
+        </tbody>
+      </table>
+
+      <nav class="text-center">
+        <?php echo $items->appends(Request::input())->links(); ?>
+
+      </nav>
+      <?php else: ?>
+      No hay datos!
+      <?php endif; ?>
+    </div>
+  </div>
+</div>
+</div>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('footer_content'); ?>
+footer
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('template.generic_admin', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

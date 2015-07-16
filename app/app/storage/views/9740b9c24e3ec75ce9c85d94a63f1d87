@@ -1,0 +1,103 @@
+<?php $__env->startSection('body_content'); ?>
+<div class="container-fluid">
+    <hr>
+    <?php if(!$show && ( (Auth::user()->hasRole('8.1')) || (Auth::user()->hasRole('8.2')) )): ?>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title"><?php if($inkmix->id): ?> Editar <?php else: ?> Crear <?php endif; ?> Tinta Mezcla</h3>
+        </div>
+        <div class="panel-body">
+            <?php if($inkmix->id): ?>
+            <?php if(Auth::user()->hasRole('8.2')): ?>
+            <?php echo Form::model($inkmix, ['id' => 'form_inkmix', 'route' => ['admin.inkmix.update', $inkmix->id], 'method' => 'put', 'role'=>'form', 'class'=>'form-horizontal']); ?>
+
+            <?php endif; ?>
+            <?php else: ?>
+            <?php if(Auth::user()->hasRole('8.1')): ?>
+            <?php echo Form::model($inkmix, ['id' => 'form_inkmix', 'route' => 'admin.inkmix.store', 'role'=>'form', 'class'=>'form-horizontal']); ?>
+
+            <?php endif; ?>
+            <?php endif; ?>
+            <div class="form-group">
+                <?php echo Form::label('name', 'Nombre', array('class' => 'control-label col-sm-2')); ?>
+
+                <div class="col-sm-4">
+                    <?php echo Form::text('name',null, array('class' => 'form-control')); ?>
+
+                </div>
+            </div>
+            <div class="form-group">
+                <?php echo Form::label('reference', 'Referencia', array('class' => 'control-label col-sm-2')); ?>
+
+                <div class="col-sm-4">
+                    <?php echo Form::text('reference',null, array('class' => 'form-control')); ?>
+
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-4">
+                    <?php echo Form::submit('Guardar', array('class' =>'btn btn-primary', 'id'=>'save_button')); ?>
+
+                    <span></span>
+                    <a href="<?php echo URL::to('/'); ?>/admin/inkmix" class="btn btn-info">Cancelar</a>
+                </div>
+            </div>
+            <div class="form-group">
+                <table class="table table-striped table-bordered table-hover">
+                    <tr>
+                        <td>Orden</td>
+                        <td>Tinta base</td>
+                        <td>Cantidad</td>
+                        <td>%</td>
+                    </tr>
+                    <tr>
+                        <td>Orden</td>
+                        <td>Tinta base</td>
+                        <td>Cantidad</td>
+                        <td>%</td>
+                    </tr>
+                </table>
+            </div>
+            <?php echo Form::close(); ?>
+
+        </div>
+    </div>
+    <?php else: ?>
+    <!-- Contenido de la visualizacion del item -->
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Detalles</h3>
+        </div>
+        <div class="panel-body">
+            <?php echo Form::open(array('role'=>'form', 'class'=>'form-horizontal')); ?>
+
+            <div class="form-group">
+                <?php echo Form::label('name', 'Nombre', array('class' => 'control-label col-sm-2')); ?>
+
+                <div class="col-sm-4">
+                    <?php echo Form::label('name',$inkmix->name, array('class' => 'form-control')); ?>
+
+                </div>
+            </div>
+            <div class="form-group">
+                <?php echo Form::label('reference', 'Referencia', array('class' => 'control-label col-sm-2')); ?>
+
+                <div class="col-sm-4">
+                    <?php echo Form::label('reference',$inkmix->reference, array('class' => 'form-control')); ?>
+
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-4">
+                    <a href="<?php echo URL::to('/'); ?>/admin/inkmix" class="btn btn-info">Volver</a>
+                </div>
+            </div>
+            <?php echo Form::close(); ?>
+
+        </div>
+    </div>
+    <?php endif; ?>
+</div>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('template.generic_admin', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

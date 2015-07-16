@@ -1,0 +1,15 @@
+<?php $__env->startSection('head_content'); ?>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('body_content'); ?>
+
+<div align="center">
+    <h1>Bienvenido al sistema de informacion</h1>
+</div>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('footer_content'); ?>
+footer
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('template.generic_admin', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

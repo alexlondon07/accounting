@@ -1,0 +1,247 @@
+<?php $__env->startSection('body_content'); ?>
+<div class="container-fluid">
+    <hr>
+    <?php if(!$show): ?>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title"><?php if($user->id): ?> Editar <?php else: ?> Crear <?php endif; ?> Usuario</h3>
+        </div>
+        <div class="panel-body">
+            <?php if($user->id): ?>
+              <?php if(Auth::user()->hasRole('2.2')): ?>
+              <?php echo Form::model($user, ['id' => 'form_user', 'route' => ['admin.user.update', $user->id], 'method' => 'put', 'role'=>'form', 'class'=>'form-horizontal']); ?>
+
+              <?php echo Form::hidden('username_old', $user->username, array('id'=>'username_old')); ?>
+
+              <?php endif; ?>
+            <?php else: ?>
+              <?php if(Auth::user()->hasRole('2.1')): ?>
+              <?php echo Form::model($user, ['id' => 'form_user', 'route' => 'admin.user.store', 'role'=>'form', 'class'=>'form-horizontal']); ?>
+
+              <?php endif; ?>
+            <?php endif; ?>
+            <div class="form-group">
+                <?php echo Form::label('client_id', 'Pertenence a', array('class' => 'control-label col-sm-2')); ?>
+
+                <div class="col-sm-4">
+                    <?php echo Form::select('client_id',$array_client, null, array('class'=>'form-control')); ?>
+
+                </div>
+            </div>
+            <div class="form-group">
+                <?php echo Form::label('firstname', 'Nombre', array('class' => 'control-label col-sm-2')); ?>
+
+                <div class="col-sm-4">
+                    <?php echo Form::text('firstname',null, array('class' => 'form-control')); ?>
+
+                </div>
+            </div>
+            <div class="form-group">
+                <?php echo Form::label('lastname', 'Apellido', array('class' => 'control-label col-sm-2')); ?>
+
+                <div class="col-sm-4">
+                    <?php echo Form::text('lastname',null, array('class' => 'form-control')); ?>
+
+                </div>
+            </div>
+            <div class="form-group">
+                <?php echo Form::label('email', 'Email', array('class' => 'control-label col-sm-2')); ?>
+
+                <div class="col-sm-4">
+                    <?php echo Form::email('email',null, array('class' => 'form-control')); ?>
+
+                    <div></div>
+                </div>
+            </div>
+            <div class="form-group">
+                <?php echo Form::label('position', 'Cargo', array('class' => 'control-label col-sm-2')); ?>
+
+                <div class="col-sm-4">
+                    <?php echo Form::text('position',null, array('class' => 'form-control')); ?>
+
+                </div>
+            </div>
+            <div class="form-group">
+                <?php echo Form::label('identification', 'Identificación', array('class' => 'control-label col-sm-2')); ?>
+
+                <div class="col-sm-4">
+                    <?php echo Form::text('identification',null, array('class' => 'form-control')); ?>
+
+                </div>
+            </div>
+            <div class="form-group">
+                <?php echo Form::label('telephone', 'Telefono', array('class' => 'control-label col-sm-2')); ?>
+
+                <div class="col-sm-4">
+                    <?php echo Form::text('telephone',null, array('class' => 'form-control')); ?>
+
+                </div>
+            </div>
+            <div class="form-group">
+                <?php echo Form::label('cellphone', 'Celular', array('class' => 'control-label col-sm-2')); ?>
+
+                <div class="col-sm-4">
+                    <?php echo Form::text('cellphone',null, array('class' => 'form-control')); ?>
+
+                </div>
+            </div>
+            <div class="form-group">
+                <?php echo Form::label('username', 'Usuario', array('class' => 'control-label col-sm-2')); ?>
+
+                <div class="col-sm-4">
+                    <?php echo Form::text('username',null, array('class' => 'form-control')); ?>
+
+                    <div></div>
+                </div>
+            </div>
+            <div class="form-group">
+                <?php echo Form::label('password', 'Contraseña', array('class' => 'control-label col-sm-2')); ?>
+
+                <div class="col-sm-4">
+                    <?php echo Form::password('password', array('class' => 'form-control')); ?>
+
+                </div>
+            </div>
+            <div class="form-group">
+                <?php echo Form::label('profile', 'Perfil', array('class' => 'control-label col-sm-2')); ?>
+
+                <div class="col-sm-4">
+                    <?php echo Form::select('profile',array('operario'=>'Operario','supervisor'=>'Supervisor','super_admin'=>'Administrador'), null, array('class'=>'form-control')); ?>
+
+                </div>
+            </div>
+            <div class="form-group">
+                <?php echo Form::label('enable', 'Habilitado', array('class' => 'control-label col-sm-2')); ?>
+
+                <div class="col-sm-4">
+                    <?php echo Form::select('enable',array('SI'=>'SI','NO'=>'NO'), null, array('class'=>'form-control')); ?>
+
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-4">
+                    <?php echo Form::submit('Guardar', array('class' =>'btn btn-primary', 'id'=>'save_button')); ?>
+
+                    <span></span>
+                    <a href="<?php echo URL::to('/'); ?>/admin/user" class="btn btn-info">Cancelar</a>
+                </div>
+            </div>
+            <?php echo Form::close(); ?>
+
+        </div>
+    </div>
+
+    <?php else: ?>
+    <!-- Contenido de la visualizacion del item -->
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Detalles Usuario</h3>
+        </div>
+        <div class="panel-body">
+            <?php echo Form::open(array('role'=>'form', 'class'=>'form-horizontal')); ?>
+
+            <div class="form-group">
+                <?php echo Form::label('client_id', 'Pertenence a', array('class' => 'control-label col-sm-2')); ?>
+
+                <div class="col-sm-4">
+                    <?php echo Form::select('client_id',$array_client, $user->client_id, array('class'=>'form-control','disabled' => 'true')); ?>
+
+                </div>
+            </div>
+            <div class="form-group">
+                <?php echo Form::label('firstname', 'Nombre', array('class' => 'control-label col-sm-2')); ?>
+
+                <div class="col-sm-4">
+                    <?php echo Form::label('firstname',$user->firstname, array('class' => 'form-control')); ?>
+
+                </div>
+            </div>
+            <div class="form-group">
+                <?php echo Form::label('lastname', 'Apellido', array('class' => 'control-label col-sm-2')); ?>
+
+                <div class="col-sm-4">
+                    <?php echo Form::label('lastname',$user->lastname, array('class' => 'form-control')); ?>
+
+                </div>
+            </div>
+            <div class="form-group">
+                <?php echo Form::label('email', 'Email', array('class' => 'control-label col-sm-2')); ?>
+
+                <div class="col-sm-4">
+                    <?php echo Form::label('email',$user->email, array('class' => 'form-control')); ?>
+
+                </div>
+            </div>
+            <div class="form-group">
+                <?php echo Form::label('position', 'Cargo', array('class' => 'control-label col-sm-2')); ?>
+
+                <div class="col-sm-4">
+                    <?php echo Form::label('position',$user->position, array('class' => 'form-control')); ?>
+
+                </div>
+            </div>
+            <div class="form-group">
+                <?php echo Form::label('identification', 'Identificación', array('class' => 'control-label col-sm-2')); ?>
+
+                <div class="col-sm-4">
+                    <?php echo Form::label('identification',$user->identification, array('class' => 'form-control')); ?>
+
+                </div>
+            </div>
+            <div class="form-group">
+                <?php echo Form::label('telephone', 'Telefono', array('class' => 'control-label col-sm-2')); ?>
+
+                <div class="col-sm-4">
+                    <?php echo Form::label('telephone',$user->telephone, array('class' => 'form-control')); ?>
+
+                </div>
+            </div>
+            <div class="form-group">
+                <?php echo Form::label('cellphone', 'Celular', array('class' => 'control-label col-sm-2')); ?>
+
+                <div class="col-sm-4">
+                    <?php echo Form::label('cellphone',$user->cellphone, array('class' => 'form-control')); ?>
+
+                </div>
+            </div>
+            <div class="form-group">
+                <?php echo Form::label('username', 'Usuario', array('class' => 'control-label col-sm-2')); ?>
+
+                <div class="col-sm-4">
+                    <?php echo Form::label('username',$user->username, array('class' => 'form-control')); ?>
+
+                </div>
+            </div>
+            <div class="form-group">
+                <?php echo Form::label('profile', 'Perfil', array('class' => 'control-label col-sm-2')); ?>
+
+                <div class="col-sm-4">
+                    <?php echo Form::select('profile',array('operario'=>'Operario','supervisor'=>'Supervisor','super_admin'=>'Administrador'), $user->profile, array('class'=>'form-control','disabled' => 'true')); ?>
+
+                </div>
+            </div>
+            <div class="form-group">
+                <?php echo Form::label('enable', 'Habilitado', array('class' => 'control-label col-sm-2')); ?>
+
+                <div class="col-sm-4">
+                    <?php echo Form::select('enable',array('SI'=>'SI','NO'=>'NO'), $user->enable, array('class'=>'form-control','disabled' => 'true')); ?>
+
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-4">
+                    <a href="<?php echo URL::to('/'); ?>/admin/user" class="btn btn-info">Volver</a>
+                </div>
+            </div>
+            <?php echo Form::close(); ?>
+
+        </div>
+    </div>
+    <?php endif; ?>
+</div>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('javascript_content'); ?>
+<script type="text/javascript" src="<?php echo URL::to('/'); ?>/js/User.js?v=<?php echo Util::version(); ?>"></script>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('template.generic_admin', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
