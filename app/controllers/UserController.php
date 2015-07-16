@@ -86,7 +86,7 @@ class UserController extends \BaseController {
      * @param  int  $id
      * @return Response
      */
-    public function show($id) {
+    public function show($id= null) {
         // $array_client = array();
         // $arr = Client::orderBy('name', 'ASC')->get();
         // $array_client[0] = 'Seleccione...';
@@ -105,7 +105,7 @@ class UserController extends \BaseController {
      * @param  int  $id
      * @return Response
      */
-    public function edit($id) {
+    public function edit($id= null) {
         // $array_client = array();
         // $arr = Client::orderBy('name', 'ASC')->get();
         // $array_client[0] = 'Seleccione...';

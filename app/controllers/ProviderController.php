@@ -70,7 +70,7 @@ class ProviderController extends \BaseController {
      * @param  int  $id
      * @return Response
      */
-    public function show($id) {
+    public function show($id=null) {
         $provider = Provider::find($id);
         $show = true;
         return View::make('provider.new_edit_provider', compact('provider', 'show'));
@@ -82,7 +82,7 @@ class ProviderController extends \BaseController {
      * @param  int  $id
      * @return Response
      */
-    public function edit($id) {
+    public function edit($id=null) {
         $provider = Provider::find($id);
         $show = false;
         return View::make('provider.new_edit_provider', compact('provider', 'show'));

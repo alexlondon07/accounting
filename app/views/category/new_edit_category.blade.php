@@ -17,6 +17,7 @@
             {{ Form::model($category, ['id' => 'form_category', 'route' => 'admin.category.store', 'role'=>'form', 'class'=>'form-horizontal']) }}
             @endif
             @endif
+            @if(!empty($category))
             <div class="form-group">
                 {{Form::label('name', 'Nombre', array('class' => 'control-label col-sm-2'))}}
                 <div class="col-sm-4">
@@ -35,6 +36,9 @@
                     {{ Form::select('enable',array('SI'=>'SI','NO'=>'NO'), null, array('class'=>'form-control')) }}
                 </div>
             </div>
+            @else
+            <p class="">No existe información para esta categoria</p>
+            @endif
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-4">
                     {{ Form::submit('Guardar', array('class' =>'btn btn-primary', 'id'=>'save_button')) }}
@@ -52,10 +56,11 @@
 <hr>
 <div class="panel panel-default">
     <div class="panel-heading">
-        <h3 class="panel-title">Detalles Cliente</h3>
+        <h3 class="panel-title">Detalles Categoria</h3>
     </div>
     <div class="panel-body">
         {{ Form::open(array('role'=>'form', 'class'=>'form-horizontal'))}}
+        @if(!empty($category))
         <div class="form-group">
             {{Form::label('name', 'Nombre', array('class' => 'control-label col-sm-2'))}}
             <div class="col-sm-4">
@@ -74,7 +79,9 @@
                 {{ Form::select('enable',array('SI'=>'SI','NO'=>'NO'), $category->enable, array('class'=>'form-control','disabled' => 'true')) }}
             </div>
         </div>
-
+        @else
+        <p class="">No existe información para esta categoria</p>
+        @endif
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-4">
                 <a href="{{URL::to('/')}}/admin/category" class="btn btn-info">Volver</a>

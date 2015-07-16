@@ -17,6 +17,8 @@
             {{ Form::model($cost, ['id' => 'form_cost', 'route' => 'admin.cost.store', 'role'=>'form', 'class'=>'form-horizontal']) }}
             @endif
             @endif
+            
+            @if (!empty($cost))
             <div class="form-group">
                 {{Form::label('name', 'Nombre', array('class' => 'control-label col-sm-2'))}}
                 <div class="col-sm-4">
@@ -59,6 +61,9 @@
                     {{ Form::select('enable',array('SI'=>'SI','NO'=>'NO'), null, array('class'=>'form-control')) }}
                 </div>
             </div>
+            @else
+            <p class="">No existe información para éste costo</p>
+            @endif
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-4">
                     {{ Form::submit('Guardar', array('class' =>'btn btn-primary', 'id'=>'save_button')) }}
@@ -80,6 +85,7 @@
     </div>
     <div class="panel-body">
         {{ Form::open(array('role'=>'form', 'class'=>'form-horizontal'))}}
+        @if(!empty($cost))
         <div class="form-group">
             {{Form::label('name', 'Nombre', array('class' => 'control-label col-sm-2'))}}
             <div class="col-sm-4">
@@ -122,7 +128,9 @@
                 {{ Form::select('enable',array('SI'=>'SI','NO'=>'NO'), $cost->enable, array('class'=>'form-control','disabled' => 'true')) }}
             </div>
         </div>
-
+        @else
+        <p class="">No existe información para éste costo</p>
+        @endif
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-4">
                 <a href="{{URL::to('/')}}/admin/cost" class="btn btn-info">Volver</a>

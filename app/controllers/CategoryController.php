@@ -52,7 +52,7 @@ class CategoryController extends \BaseController {
      * @param  int  $id
      * @return Response
      */
-    public function show($id) {
+    public function show($id=null) {
         $category = Category::find($id);
         $show = true;
         return View::make('category.new_edit_category', compact('category', 'show'));
@@ -64,7 +64,7 @@ class CategoryController extends \BaseController {
      * @param  int  $id
      * @return Response
      */
-    public function edit($id) {
+    public function edit($id=null) {
         $category = Category::find($id);
         $show = false;
         return View::make('category.new_edit_category', compact('category', 'show'));

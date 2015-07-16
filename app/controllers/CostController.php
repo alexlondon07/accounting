@@ -64,7 +64,7 @@ class CostController extends \BaseController {
      * @param  int  $id
      * @return Response
      */
-    public function show($id) {
+    public function show($id=null) {
         $cost = Cost::find($id);
         $show = true;
         return View::make('cost.new_edit_cost', compact('cost', 'show'));
@@ -76,7 +76,7 @@ class CostController extends \BaseController {
      * @param  int  $id
      * @return Response
      */
-    public function edit($id) {
+    public function edit($id=null) {
         $cost = Cost::find($id);
         $show = false;
         return View::make('cost.new_edit_cost', compact('cost', 'show'));

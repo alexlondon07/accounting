@@ -17,6 +17,8 @@
             {{ Form::model($client, ['id' => 'form_client', 'route' => 'admin.client.store', 'role'=>'form', 'class'=>'form-horizontal']) }}
             @endif
             @endif
+
+            @if (!empty($client))
             <div class="form-group">
                 {{Form::label('name', 'Nombre', array('class' => 'control-label col-sm-2'))}}
                 <div class="col-sm-4">
@@ -41,6 +43,9 @@
                     {{ Form::select('enable',array('SI'=>'SI','NO'=>'NO'), null, array('class'=>'form-control')) }}
                 </div>
             </div>
+            @else
+            <p class="">No existe información para éste cliente</p>
+            @endif
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-4">
                     {{ Form::submit('Guardar', array('class' =>'btn btn-primary', 'id'=>'save_button')) }}
@@ -88,7 +93,7 @@
             </div>
         </div>
         @else
-        <p class="bg-info">No existe información para éste cliente</p>
+        <p class="">No existe información para éste cliente</p>
         @endif
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-4">

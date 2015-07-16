@@ -67,7 +67,7 @@ class ClientController extends \BaseController {
      * @param  int  $id
      * @return Response
      */
-    public function edit($id) {
+    public function edit($id= null) {
         $client = Client::find($id);
         $show = false;
         return View::make('client.new_edit_client', compact('client', 'show'));
