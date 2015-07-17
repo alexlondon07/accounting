@@ -17,7 +17,7 @@
             {{ Form::model($cost, ['id' => 'form_cost', 'route' => 'admin.cost.store', 'role'=>'form', 'class'=>'form-horizontal']) }}
             @endif
             @endif
-            
+
             @if (!empty($cost))
             <div class="form-group">
                 {{Form::label('name', 'Nombre', array('class' => 'control-label col-sm-2'))}}

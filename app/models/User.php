@@ -90,51 +90,51 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
                 $assigned_roles[] = User::getIdFromRoles($roles, '3.2');
                 //Eliminar proveedores
                 $assigned_roles[] = User::getIdFromRoles($roles, '3.3');
-                //Ubicaciones
+                //costos
                 $assigned_roles[] = User::getIdFromRoles($roles, '4');
                 $assigned_roles[] = User::getIdFromRoles($roles, '4.1');
                 $assigned_roles[] = User::getIdFromRoles($roles, '4.2');
                 $assigned_roles[] = User::getIdFromRoles($roles, '4.3');
-                //Maquinas
+                //Cateoria
                 $assigned_roles[] = User::getIdFromRoles($roles, '5');
                 $assigned_roles[] = User::getIdFromRoles($roles, '5.1');
                 $assigned_roles[] = User::getIdFromRoles($roles, '5.2');
                 $assigned_roles[] = User::getIdFromRoles($roles, '5.3');
-                //Insumos
+                //Productos
                 $assigned_roles[] = User::getIdFromRoles($roles, '6');
                 $assigned_roles[] = User::getIdFromRoles($roles, '6.1');
                 $assigned_roles[] = User::getIdFromRoles($roles, '6.2');
                 $assigned_roles[] = User::getIdFromRoles($roles, '6.3');
-                //Marcos
-                $assigned_roles[] = User::getIdFromRoles($roles, '7');
-                $assigned_roles[] = User::getIdFromRoles($roles, '7.1');
-                $assigned_roles[] = User::getIdFromRoles($roles, '7.2');
-                $assigned_roles[] = User::getIdFromRoles($roles, '7.3');
-                // Tinta Mezcla
-                $assigned_roles[] = User::getIdFromRoles($roles, '8');
-                $assigned_roles[] = User::getIdFromRoles($roles, '8.1');
-                $assigned_roles[] = User::getIdFromRoles($roles, '8.2');
-                $assigned_roles[] = User::getIdFromRoles($roles, '8.3');
-                // Referencias
-                $assigned_roles[] = User::getIdFromRoles($roles, '9');
-                $assigned_roles[] = User::getIdFromRoles($roles, '9.1');
-                $assigned_roles[] = User::getIdFromRoles($roles, '9.2');
-                $assigned_roles[] = User::getIdFromRoles($roles, '9.3');
-                // Kit
-                $assigned_roles[] = User::getIdFromRoles($roles, '10');
-                $assigned_roles[] = User::getIdFromRoles($roles, '10.1');
-                $assigned_roles[] = User::getIdFromRoles($roles, '10.2');
-                $assigned_roles[] = User::getIdFromRoles($roles, '10.3');
-                // Pedidos
-                $assigned_roles[] = User::getIdFromRoles($roles, '11');
-                $assigned_roles[] = User::getIdFromRoles($roles, '11.1');
-                $assigned_roles[] = User::getIdFromRoles($roles, '11.2');
-                $assigned_roles[] = User::getIdFromRoles($roles, '11.3');
-                // Ordenes
-                $assigned_roles[] = User::getIdFromRoles($roles, '12');
-                $assigned_roles[] = User::getIdFromRoles($roles, '12.1');
-                $assigned_roles[] = User::getIdFromRoles($roles, '12.2');
-                $assigned_roles[] = User::getIdFromRoles($roles, '12.3');
+                // //Marcos
+                // $assigned_roles[] = User::getIdFromRoles($roles, '7');
+                // $assigned_roles[] = User::getIdFromRoles($roles, '7.1');
+                // $assigned_roles[] = User::getIdFromRoles($roles, '7.2');
+                // $assigned_roles[] = User::getIdFromRoles($roles, '7.3');
+                // // Tinta Mezcla
+                // $assigned_roles[] = User::getIdFromRoles($roles, '8');
+                // $assigned_roles[] = User::getIdFromRoles($roles, '8.1');
+                // $assigned_roles[] = User::getIdFromRoles($roles, '8.2');
+                // $assigned_roles[] = User::getIdFromRoles($roles, '8.3');
+                // // Referencias
+                // $assigned_roles[] = User::getIdFromRoles($roles, '9');
+                // $assigned_roles[] = User::getIdFromRoles($roles, '9.1');
+                // $assigned_roles[] = User::getIdFromRoles($roles, '9.2');
+                // $assigned_roles[] = User::getIdFromRoles($roles, '9.3');
+                // // Kit
+                // $assigned_roles[] = User::getIdFromRoles($roles, '10');
+                // $assigned_roles[] = User::getIdFromRoles($roles, '10.1');
+                // $assigned_roles[] = User::getIdFromRoles($roles, '10.2');
+                // $assigned_roles[] = User::getIdFromRoles($roles, '10.3');
+                // // Pedidos
+                // $assigned_roles[] = User::getIdFromRoles($roles, '11');
+                // $assigned_roles[] = User::getIdFromRoles($roles, '11.1');
+                // $assigned_roles[] = User::getIdFromRoles($roles, '11.2');
+                // $assigned_roles[] = User::getIdFromRoles($roles, '11.3');
+                // // Ordenes
+                // $assigned_roles[] = User::getIdFromRoles($roles, '12');
+                // $assigned_roles[] = User::getIdFromRoles($roles, '12.1');
+                // $assigned_roles[] = User::getIdFromRoles($roles, '12.2');
+                // $assigned_roles[] = User::getIdFromRoles($roles, '12.3');
                 break;
             case 'supervisor':
                 $assigned_roles[] = User::getIdFromRoles($roles, '10');

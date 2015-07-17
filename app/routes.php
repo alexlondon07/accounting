@@ -30,6 +30,8 @@
               Route::get('costs/search', 'CostController@search');
               Route::resource('category', 'CategoryController');
               Route::get('categorys/search', 'CategoryController@search');
+              Route::resource('product', 'ProductController');
+              Route::get('products/search', 'ProductController@search');
     });
 
 // llamados ajax

@@ -12,7 +12,17 @@ class CreateProductTable extends Migration {
 	 */
 	public function up()
 	{
-		//
+		Schema::create('product', function(Blueprint $table) {
+			$table->increments('id');
+			$table->unsignedInteger('category_id');
+            $table->string('name');
+            $table->string('description');
+            $table->string('cost');
+            $table->string('value');
+            $table->string('enable');
+            $table->timestamps();
+            $table->softDeletes();
+        });
 	}
 
 	/**
@@ -22,7 +32,7 @@ class CreateProductTable extends Migration {
 	 */
 	public function down()
 	{
-		//
+		chema::drop('product');
 	}
 
 }
