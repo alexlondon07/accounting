@@ -16,6 +16,8 @@ class DatabaseSeeder extends Seeder {
         Roles::truncate();
         Client::truncate();
         Provider::truncate();
+        Cost::truncate();
+        Category::truncate();
         // se insertan los roles del sistema
         $this->call('RolesTableSeeder');
         // se ponen datos de pruebas

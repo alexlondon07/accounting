@@ -6,7 +6,7 @@
 @section('body_content')
 
 <div align="center">
-    <h1>Bienvenido</h1>
+    <h1>Bienvenido al sistema</h1>
 </div>
 @stop
 
