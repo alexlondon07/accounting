@@ -37,7 +37,6 @@
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                     @if(Auth::check())
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="{{URL::to('/')}}"><i class="fa fa-home"></i> Home</a></li>
                         @if(Auth::user()->hasRole('1'))
                         <li><a href="{{URL::to('/')}}/admin/client" title="Clientes"><i class="fa fa-group"></i> Clientes</a></li>
                         @endif
@@ -60,6 +59,10 @@
 
                         @if(Auth::user()->hasRole('6'))
                         <li><a href="{{URL::to('/')}}/admin/product" title="Productos"><i class="glyphicon glyphicon-oil"></i> Productos</a></li>
+                        @endif
+
+                        @if(Auth::user()->hasRole('7'))
+                        <li><a href="{{URL::to('/')}}/admin/product" title="Productos"><i class="glyphicon glyphicon-shopping-cart"></i> Compras</a></li>
                         @endif
                         <li><a href="{{URL::to('/')}}/logout" title="Cerrar sesión"><i class="glyphicon glyphicon-off"></i> Cerrar sesión</a></li>
                     </ul>
