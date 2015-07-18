@@ -21,15 +21,8 @@ class UserController extends \BaseController {
      * @return Response
      */
     public function create() {
-        // $array_client = array();
-        // $arr = Client::orderBy('name', 'ASC')->get();
-        // $array_client[0] = 'Seleccione...';
-        // foreach ($arr as $i) {
-        //     $array_client[$i->id] = $i->name;
-        // }
         $user = new User;
         $show = false;
-        // return View::make('user.new_edit_user', compact('user', 'show', 'array_client'));
         return View::make('user.new_edit_user', compact('user', 'show'));
     }
 
@@ -87,15 +80,8 @@ class UserController extends \BaseController {
      * @return Response
      */
     public function show($id= null) {
-        // $array_client = array();
-        // $arr = Client::orderBy('name', 'ASC')->get();
-        // $array_client[0] = 'Seleccione...';
-        // foreach ($arr as $i) {
-        //     $array_client[$i->id] = $i->name;
-        // }
         $user = User::find($id);
         $show = true;
-        // return View::make('user.new_edit_user', compact('user', 'show', 'array_client'));
         return View::make('user.new_edit_user', compact('user', 'show'));
     }
 
@@ -106,15 +92,8 @@ class UserController extends \BaseController {
      * @return Response
      */
     public function edit($id= null) {
-        // $array_client = array();
-        // $arr = Client::orderBy('name', 'ASC')->get();
-        // $array_client[0] = 'Seleccione...';
-        // foreach ($arr as $i) {
-        //     $array_client[$i->id] = $i->name;
-        // }
         $user = User::find($id);
         $show = false;
-        // return View::make('user.new_edit_user', compact('user', 'show', 'array_client'));
         return View::make('user.new_edit_user', compact('user', 'show'));
     }
 
@@ -156,9 +135,6 @@ class UserController extends \BaseController {
         if (Input::get('enable')) {
             $user->enable = Input::get('enable');
         }
-        // if (Input::get('client_id')) {
-        //     $user->client_id = Input::get('client_id');
-        // }
         if (Input::get('profile')) {
             $user->profile = Input::get('profile');
             $profile = Input::get('profile');
