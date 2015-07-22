@@ -220,7 +220,8 @@ class UserController extends \BaseController {
                     return Redirect::to(URL::to('admin/main')); //: Redirect::to(URL::previous());
                 } else {
                     // Autenticacion Incorrecta, redireciona a pagina anterior
-                    return Redirect::to(URL::previous());
+                    //return Redirect::to(URL::previous());
+                    return Redirect::back()->with('error_message', 'Usuario o Contraseña incorrectos!')->withInput();
                 }
             }
         }

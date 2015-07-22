@@ -18,8 +18,7 @@
           <![endif]-->
 
           <!-- Font -->
-          <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-          @yield('head_content')
+        @yield('head_content')
       </head>
       <body>
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">

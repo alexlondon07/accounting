@@ -18,10 +18,12 @@ class Product extends Eloquent {
     protected $table = 'product';
 
         /**
-         * Relacion, un producto tiene una categoria asociada
+         * Relacion uno a muchos has_many
+         * Un producto pertence una categoria asociada, y una catagoria pertence a muchos productos
+         * asociados
          * @return Relation
          */
         public function category() {
-            return $this->hasOne('Category');
+            return $this->has_many('Category');
         }
 }

@@ -43,7 +43,8 @@ class CategoryController extends \BaseController {
             $category->enable = Input::get('enable');
         }
         $category->save();
-        return Redirect::to('admin/category');
+        // return Redirect::to('admin/category');
+        return Redirect::to('admin/category')->with('success_message', 'El registro ha sido ingresado correctamente.')->withInput();
     }
 
     /**
@@ -88,7 +89,8 @@ class CategoryController extends \BaseController {
             $category->enable = Input::get('enable');
         }
         $category->save();
-        return Redirect::to('admin/category');
+        return Redirect::to('admin/category')->with('success_message', 'El registro ha sido modificado correctamente.')->withInput();
+        // return Redirect::to('admin/category');
     }
 
     /**

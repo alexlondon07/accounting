@@ -18,13 +18,14 @@ class Category extends Eloquent {
     protected $table = 'category';
 
 
-    /**
-     * Relacion, una categoria puede pertenecer a un producto
-     * belongs_to() para señalar la clave foránea, que existe en esta tabla.
-     * @return Relation
-     */
+        /**
+         * Relacion uno a muchos has_many
+         * Un producto pertence una categoria asociada, y una catagoria pertence a muchos productos
+         * asociados
+         * @return Relation
+         */
     public function product() {
-        return $this->belongsTo('Product');
+        return $this->has_many('Product');
     }
 
 }
