@@ -5,7 +5,7 @@
     @if(!$show)
     <div class="panel panel-default">
         <div class="panel-heading">
-            <h3 class="panel-title">@if($user->id) Editar @else Crear @endif Usuario</h3>
+            <h3 class="panel-title"><i class="glyphicon glyphicon-user"></i>@if($user->id) Editar @else Crear @endif usuario</h3>
         </div>
         <div class="panel-body">
             @if($user->id)

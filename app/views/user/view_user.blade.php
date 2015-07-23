@@ -10,7 +10,7 @@
             <h1 class="page-header">Usuarios</h1>
             <div class="controls form-inline">
                 @if(Auth::user()->hasRole('2.1'))
-                    <a href="{{ URL::to('/') }}/admin/client/create" class="btn btn-primary pull-right">Ingresar usuarios</a>
+                    <a href="{{ URL::to('/') }}/admin/user/create" class="btn btn-primary pull-right">Ingresar usuarios</a>
                 @endif
                 <div class="input-group">
                   {{ Form::open(array('url' => 'admin/users/search', 'id' => 'search_form', 'method'=>'GET', 'class'=>'control-group')) }}
@@ -18,7 +18,7 @@
                         <input id="search"  name="search"  type="text" required="true" class="form-control" placeholder="Buscar..." value="@if(isset($search)){{ $search }}@endif" >
                   </div>
                   <button class="btn btn-default"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
-                  <a href="{{URL::to('/')}}/admin/client" title="Refrescar Usuarios"class="btn btn-default"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span></a>
+                  <a href="{{URL::to('/')}}/admin/user" title="Refrescar Usuarios"class="btn btn-default"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span></a>
                   {{ Form::close() }}
               </div>
           </div>

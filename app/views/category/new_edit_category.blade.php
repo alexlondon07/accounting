@@ -5,7 +5,7 @@
     @if(!$show)
     <div class="panel panel-default">
         <div class="panel-heading">
-            <h3 class="panel-title">@if($category->id) Editar @else Crear @endif</h3>
+            <h3 class="panel-title"><i class="glyphicon glyphicon-list"></i>  @if($category->id) Editar @else Crear @endif categoria</h3>
         </div>
         <div class="panel-body">
             @if($category->id)
