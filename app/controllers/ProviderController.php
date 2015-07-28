@@ -32,6 +32,14 @@ class ProviderController extends \BaseController {
      * @return Response
      */
     public function store() {
+        // se define la validacion de los campos
+        $rules = array('name' => 'required|max:60', 'email' => 'email|unique:provider', 'telephone' => 'numeric');
+        // Se validan los datos ingresados segun las reglas definidas
+        $validator = Validator::make(Input::all(), $rules);
+        if ($validator->fails()) {
+            return Redirect::back()->withInput()->withErrors($validator);
+        }
+
         $provider = new Provider;
         if (Input::get('name')) {
             $provider->name = Input::get('name');
@@ -95,6 +103,14 @@ class ProviderController extends \BaseController {
      * @return Response
      */
     public function update($id) {
+        // se define la validacion de los campos
+        $rules = array('name' => 'required|max:60', 'email' => 'email|unique:provider', 'telephone' => 'numeric');
+        // Se validan los datos ingresados segun las reglas definidas
+        $validator = Validator::make(Input::all(), $rules);
+        if ($validator->fails()) {
+            return Redirect::back()->withInput()->withErrors($validator);
+        }
+
         $provider = Provider::find($id);
         if (Input::get('name')) {
             $provider->name = Input::get('name');

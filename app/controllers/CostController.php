@@ -32,6 +32,14 @@ class CostController extends \BaseController {
      * @return Response
      */
     public function store() {
+        // se define la validacion de los campos
+        $rules = array('name' => 'required|max:60', 'type' => 'required', 'value' => 'required|numeric', 'description' => 'required|max:200');
+        // Se validan los datos ingresados segun las reglas definidas
+        $validator = Validator::make(Input::all(), $rules);
+        if ($validator->fails()) {
+            return Redirect::back()->withInput()->withErrors($validator);
+        }
+
         $cost = new Cost;
         if (Input::get('name')) {
             $cost->name = Input::get('name');
@@ -89,6 +97,14 @@ class CostController extends \BaseController {
      * @return Response
      */
     public function update($id) {
+        // se define la validacion de los campos
+        $rules = array('name' => 'required|max:60', 'type' => 'required', 'value' => 'required|numeric', 'description' => 'required|max:200');
+        // Se validan los datos ingresados segun las reglas definidas
+        $validator = Validator::make(Input::all(), $rules);
+        if ($validator->fails()) {
+            return Redirect::back()->withInput()->withErrors($validator);
+        }
+
         $cost = Cost::find($id);
         if (Input::get('name')) {
             $cost->name = Input::get('name');

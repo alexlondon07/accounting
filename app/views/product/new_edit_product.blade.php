@@ -19,34 +19,38 @@
             @endif
 
             @if (!empty($product))
-            <div class="form-group">
+            <div class="form-group @if ($errors->has('name')) has-error @endif">
                 {{Form::label('category_id', 'Pertenence a', array('class' => 'control-label col-sm-2'))}}
                 <div class="col-sm-4">
                     {{ Form::select('category_id',$array_category, null, array('class'=>'form-control')) }}
+                    @if ($errors->has('category_id')) <p class="help-block">{{ $errors->first('category_id') }}</p> @endif
                 </div>
             </div>
-            <div class="form-group">
+            <div class="form-group @if ($errors->has('name')) has-error @endif">
                 {{Form::label('name', 'Nombre', array('class' => 'control-label col-sm-2'))}}
                 <div class="col-sm-4">
-                    {{Form::text('name',null, array('class' => 'form-control', 'required' => 'required'))}}
+                    {{Form::text('name',null, array('class' => 'form-control'))}}
+                    @if ($errors->has('name')) <p class="help-block">{{ $errors->first('name') }}</p> @endif
                 </div>
             </div>
             <div class="form-group">
                 {{Form::label('description', 'Descripcion', array('class' => 'control-label col-sm-2'))}}
                 <div class="col-sm-4">
-                    {{Form::textarea('description',null, array('class' => 'form-control', 'required' => 'required' , 'size' => '20x4'))}}
+                    {{Form::textarea('description',null, array('class' => 'form-control' , 'size' => '20x4'))}}
                 </div>
             </div>
-            <div class="form-group">
+            <div class="form-group @if ($errors->has('cost')) has-error @endif">
                 {{Form::label('cost', 'Costo', array('class' => 'control-label col-sm-2'))}}
                 <div class="col-sm-4">
-                    {{Form::text('cost',null, array('class' => 'form-control' , 'required' => 'required'))}}
+                    {{Form::text('cost',null, array('class' => 'form-control'))}}
+                    @if ($errors->has('cost')) <p class="help-block">{{ $errors->first('cost') }}</p> @endif
                 </div>
             </div>
-            <div class="form-group">
+            <div class="form-group @if ($errors->has('value')) has-error @endif">
                 {{Form::label('value', 'Valor', array('class' => 'control-label col-sm-2'))}}
                 <div class="col-sm-4">
-                    {{Form::text('value',null, array('class' => 'form-control' , 'required' => 'required'))}}
+                    {{Form::text('value',null, array('class' => 'form-control'))}}
+                    @if ($errors->has('value')) <p class="help-block">{{ $errors->first('value') }}</p> @endif
                 </div>
             </div>
             <div class="form-group">

@@ -39,6 +39,14 @@ class ProductController extends \BaseController {
      * @return Response
      */
     public function store() {
+        // se define la validacion de los campos
+        $rules = array('category_id' =>'array', 'name' => 'required|max:60', 'value'=>'numeric|required','cost'=>'numeric|required');
+        // Se validan los datos ingresados segun las reglas definidas
+        $validator = Validator::make(Input::all(), $rules);
+        if ($validator->fails()) {
+            return Redirect::back()->withInput()->withErrors($validator);
+        }
+
         $product = new Product;
         if (Input::get('category_id')) {
             $product->category_id = Input::get('category_id');
@@ -107,6 +115,14 @@ class ProductController extends \BaseController {
      * @return Response
      */
     public function update($id) {
+        // se define la validacion de los campos
+        $rules = array('name' => 'required|max:60', 'value'=>'numeric|required','cost'=>'numeric|required');
+        // Se validan los datos ingresados segun las reglas definidas
+        $validator = Validator::make(Input::all(), $rules);
+        if ($validator->fails()) {
+            return Redirect::back()->withInput()->withErrors($validator);
+        }
+
         $product = Product::find($id);
         if (Input::get('category_id')) {
             $product->category_id = Input::get('category_id');

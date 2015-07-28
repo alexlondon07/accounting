@@ -19,16 +19,18 @@
             @endif
 
             @if (!empty($client))
-            <div class="form-group">
+            <div class="form-group @if ($errors->has('name')) has-error @endif">
                 {{Form::label('name', 'Nombre', array('class' => 'control-label col-sm-2'))}}
                 <div class="col-sm-4">
-                    {{Form::text('name',null, array('class' => 'form-control', 'required' => 'required'))}}
+                    {{Form::text('name',null, array('class' => 'form-control'))}}
+                    @if ($errors->has('name')) <p class="help-block">{{ $errors->first('name') }}</p> @endif
                 </div>
             </div>
-            <div class="form-group">
+            <div class="form-group @if ($errors->has('telephone')) has-error @endif">
                 {{Form::label('telephone', 'Telefono', array('class' => 'control-label col-sm-2'))}}
                 <div class="col-sm-4">
                     {{Form::text('telephone',null, array('class' => 'form-control'))}}
+                    @if ($errors->has('telephone')) <p class="help-block">{{ $errors->first('telephone') }}</p> @endif
                 </div>
             </div>
             <div class="form-group">
