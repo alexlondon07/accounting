@@ -61,7 +61,7 @@
                         @endif
 
                         @if(Auth::user()->hasRole('7'))
-                        <li><a href="{{URL::to('/')}}/admin/product" title="Compras"><i class="glyphicon glyphicon-shopping-cart"></i> Compras</a></li>
+                        <li><a href="{{URL::to('/')}}/admin/shopping" title="Compras"><i class="glyphicon glyphicon-shopping-cart"></i> Compras</a></li>
                         @endif
                         <li><a href="{{URL::to('/')}}/logout" title="Cerrar sesión"><i class="glyphicon glyphicon-off"></i> Cerrar sesión</a></li>
                     </ul>
