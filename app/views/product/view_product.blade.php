@@ -57,9 +57,10 @@
               </td>
               <td>{{ $item->name }}</td>
               <td>{{ $item->description }}</td>
-              <td>{{ $item->cost }}</td>
-              <td>{{ $item->value }}</td>
+              <td>{{ number_format($item->cost, 2, ',', ' ');  }}</td>
+              <td>{{ number_format($item->value, 2, ',', ' '); }}</td>
               <td>{{ $item->enable }}</td>
+
             </tr>
             @endforeach
           </tbody>

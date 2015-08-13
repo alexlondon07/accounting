@@ -25,6 +25,26 @@ class DevelopmentTableSeeder extends Seeder {
         $user->roles()->attach(10);
         $user->roles()->attach(11);
         $user->roles()->attach(12);
+        $user->roles()->attach(13);
+        $user->roles()->attach(14);
+        $user->roles()->attach(15);
+        $user->roles()->attach(16);
+        $user->roles()->attach(17);
+        $user->roles()->attach(18);
+        $user->roles()->attach(19);
+        $user->roles()->attach(20);
+        $user->roles()->attach(21);
+        $user->roles()->attach(22);
+        $user->roles()->attach(23);
+        $user->roles()->attach(24);
+        $user->roles()->attach(25);
+        $user->roles()->attach(26);
+        $user->roles()->attach(27);
+        $user->roles()->attach(28);
+        $user->roles()->attach(29);
+        $user->roles()->attach(30);
+        $user->roles()->attach(31);
+        $user->roles()->attach(32);
 
         $faker = Faker\Factory::create();
         $count_client = 5;
@@ -37,9 +57,42 @@ class DevelopmentTableSeeder extends Seeder {
                         'identification' => $faker->numberBetween(19999999, 99999999),
                         'password' => Hash::make('admin' . $index),
             ]);
+            //Ingreso datos de prueba de clientes
             $client = Client::create([
                         'name' => $faker->company,
                         'address' => 'Caucasia Antioquia',
+                        'enable' => 'SI',
+            ]);
+            //Ingreso datos de prueba de proveedores
+            $provider =  Provider::create([
+                        'name' => $faker->company,
+                        'email' => $faker->email,
+                        'telephone' => $faker->numberBetween(19999999, 99999999),
+                        'country' => 'Colombia',
+                        'department' => 'Antioquia',
+                        'city' => 'Medellin',
+                        'enable' => 'SI',
+            ]);
+            //Ingreso datos de prueba de costos
+            $costs =  Cost::create([
+                        'name' => $faker->company,
+                        'value' => $faker->numberBetween(1999, 99999),
+                        'description' => 'Gastos de compra de mercancia',
+                        'resposible' => 'Alexander',
+                        'enable' => 'SI',
+            ]);
+            //Ingreso datos de prueba de categoria
+            $category = Category::create([
+                        'name' => $faker->company,
+                        'description' => '',
+                        'enable' => 'SI',
+            ]);
+            //Ingreso datos de prueba de productos
+            $product = Product::create([
+                        'name' => $faker->company,
+                        'description' => '',
+                        'cost' => $faker->numberBetween(1999, 9999),
+                        'value' => $faker->numberBetween(19999, 99999),
                         'enable' => 'SI',
             ]);
     }

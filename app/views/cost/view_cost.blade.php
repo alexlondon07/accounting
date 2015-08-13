@@ -58,7 +58,7 @@
               <td>{{ $item->type }}</td>
               <td>{{ $item->description }}</td>
               <td>{{ $item->resposible }}</td>
-              <td>{{ $item->value }}</td>
+              <td>{{ number_format($item->value, 2, ',', ' '); }}</td>
               <td>{{ $item->enable }}</td>
             </tr>
             @endforeach

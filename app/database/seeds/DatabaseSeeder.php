@@ -18,6 +18,8 @@ class DatabaseSeeder extends Seeder {
         Provider::truncate();
         Cost::truncate();
         Category::truncate();
+        Product::truncate();
+        //Shopping::truncate();
         // se insertan los roles del sistema
         $this->call('RolesTableSeeder');
         // se ponen datos de pruebas
