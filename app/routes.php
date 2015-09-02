@@ -39,6 +39,7 @@
 // llamados ajax
   Route::group(array('prefix' => 'ajax'), function() {
     Route::any('usernameexist', 'UserController@userNameExist');
+    Route::any('get_product_data_table', 'ShoppingController@getProductDataTable');
     // llamados ajax que requieren autenticacion
     Route::group(array('before' => 'auth'), function() {
         // FUNCIONES QUE REQUIEREN AUTENTICACION

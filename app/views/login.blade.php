@@ -29,13 +29,11 @@
               <strong>Warning!</strong>{{ Session::get('error_message') }}
             </div>
             @endif
-
           <button class="btn btn-lg btn-primary btn-block" type="submit">Ingresar</button>
           {{ Form::close() }}
       </div>
   </div>
   <script type="text/javascript" src="{{ URL::to('/') }}/js/jquery/jquery-1.11.3.min.js"></script>
   <script type="text/javascript" src="{{ URL::to('js/bootstrap/bootstrap.min.js') }}?v={{ Util::version() }}"></script>
-
 </body>
 </html>

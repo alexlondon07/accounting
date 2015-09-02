@@ -42,10 +42,10 @@
                  <table>
                   <tr>
                     <td><a title="Detalles" href="{{ URL::to('/') }}/admin/shopping/{{ $item->id }}"><span class="glyphicon glyphicon-eye-open btn btn-default btn-xs"></span></a></td>
-                    @if(Auth::user()->hasRole('4.2'))
+                    @if(Auth::user()->hasRole('7.2'))
                     <td><a title="Editar" href="{{ URL::to('/') }}/admin/shopping/{{ $item->id }}/edit"><span class="glyphicon glyphicon-edit btn btn-default btn-xs"></span></a></td>
                     @endif
-                    @if(Auth::user()->hasRole('4.3'))
+                    @if(Auth::user()->hasRole('7.3'))
                     <td>{{ Form::open(['action' => ['ShoppingController@destroy', $item->id], 'method' => 'delete', 'style' => 'display: inline;']) }}
                       <button title="Eliminar" type="submit" onclick="return Util.confirmDelete(this);" class="glyphicon glyphicon-trash btn btn-default btn-xs"></button>
                       {{ Form::close() }}
