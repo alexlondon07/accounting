@@ -91,9 +91,9 @@ class ProviderController extends \BaseController {
      * @return Response
      */
     public function edit($id=null) {
-        $provider = Provider::find($id);
-        $show = false;
-        return View::make('provider.new_edit_provider', compact('provider', 'show'));
+            $provider = Provider::find($id);
+            $show = false;
+            return View::make('provider.new_edit_provider', compact('provider', 'show'));
     }
 
     /**
@@ -104,7 +104,7 @@ class ProviderController extends \BaseController {
      */
     public function update($id) {
         // se define la validacion de los campos
-        $rules = array('name' => 'required|max:60', 'email' => 'email|unique:provider', 'telephone' => 'numeric');
+        $rules = array('name' => 'required|max:60', 'email' => 'required|email|unique:provider,email,' . $id, 'telephone' => 'numeric');
         // Se validan los datos ingresados segun las reglas definidas
         $validator = Validator::make(Input::all(), $rules);
         if ($validator->fails()) {
