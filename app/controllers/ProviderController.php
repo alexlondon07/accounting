@@ -69,7 +69,7 @@ class ProviderController extends \BaseController {
             $provider->enable = Input::get('enable');
         }
         $provider->save();
-        return Redirect::to('admin/provider');
+        return Redirect::to('admin/provider')->with('success_message', 'El registro ha sido ingresado correctamente.')->withInput();
     }
 
     /**
@@ -140,7 +140,7 @@ class ProviderController extends \BaseController {
             $provider->enable = Input::get('enable');
         }
         $provider->save();
-        return Redirect::to('admin/provider');
+        return Redirect::to('admin/provider')->with('success_message', 'El registro ha sido modificado correctamente.')->withInput();
     }
 
     /**
@@ -152,7 +152,7 @@ class ProviderController extends \BaseController {
     public function destroy($id) {
         $provider = Provider::find($id);
         $provider->delete();
-        return Redirect::to('admin/provider');
+        return Redirect::to('admin/provider')->with('success_message', 'El registro ha sido borrado correctamente.')->withInput();
     }
 
     ////////////////////////////////////////////////////////////////////////////

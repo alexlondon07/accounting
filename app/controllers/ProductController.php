@@ -67,7 +67,7 @@ class ProductController extends \BaseController {
             $product->enable = Input::get('enable');
         }
         $product->save();
-        return Redirect::to('admin/product');
+        return Redirect::to('admin/product')->with('success_message', 'El registro ha sido ingresado correctamente.')->withInput();
     }
 
     /**
@@ -143,7 +143,7 @@ class ProductController extends \BaseController {
             $product->enable = Input::get('enable');
         }
         $product->save();
-        return Redirect::to('admin/product');
+        return Redirect::to('admin/product')->with('success_message', 'El registro ha sido modificado correctamente.')->withInput();
     }
 
     /**
@@ -155,7 +155,7 @@ class ProductController extends \BaseController {
     public function destroy($id) {
         $product = Product::find($id);
         $product->delete();
-        return Redirect::to('admin/product');
+        return Redirect::to('admin/product')->with('success_message', 'El registro ha sido borrado correctamente.')->withInput();
     }
 
     /**

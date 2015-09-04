@@ -26,13 +26,9 @@
         @if (count($items) > 0)
         <h4>{{$items->getTotal()}} resultados </h4>
 
-        <!--Se muestra mensaje de al ingresar datos correctamente-->
-        @if(Session::has('success_message'))
-          <div class="alert alert-success" role="alert">
-              <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <strong></strong>{{ Session::get('success_message') }}
-            </div>
-        @endif
+        <!--Mensajes-->
+        @include('messages')
+        <!--Fin Mensajes-->
 
         <table class="table table-striped">
           <thead>

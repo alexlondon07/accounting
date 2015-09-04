@@ -54,7 +54,8 @@ class ClientController extends \BaseController {
             $client->enable = Input::get('enable');
         }
         $client->save();
-        return Redirect::to('admin/client');
+        return Redirect::to('admin/client')->with('success_message', 'El registro ha sido ingresado correctamente.')->withInput();
+
     }
 
     /**
@@ -110,7 +111,7 @@ class ClientController extends \BaseController {
             $client->enable = Input::get('enable');
         }
         $client->save();
-        return Redirect::to('admin/client');
+        return Redirect::to('admin/client')->with('success_message', 'El registro ha sido modificado correctamente.')->withInput();
     }
 
     /**
@@ -122,7 +123,7 @@ class ClientController extends \BaseController {
     public function destroy($id) {
         $client = Client::find($id);
         $client->delete();
-        return Redirect::to('admin/client');
+        return Redirect::to('admin/client')->with('success_message', 'El registro ha sido borrado correctamente.')->withInput();
     }
 
     /**

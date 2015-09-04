@@ -63,7 +63,7 @@ class CostController extends \BaseController {
             $cost->enable = Input::get('enable');
         }
         $cost->save();
-        return Redirect::to('admin/cost');
+        return Redirect::to('admin/cost')->with('success_message', 'El registro ha sido ingresado correctamente.')->withInput();
     }
 
     /**
@@ -128,7 +128,7 @@ class CostController extends \BaseController {
             $cost->enable = Input::get('enable');
         }
         $cost->save();
-        return Redirect::to('admin/cost');
+        return Redirect::to('admin/cost')->with('success_message', 'El registro ha sido modificado correctamente.')->withInput();
     }
 
     /**
@@ -140,7 +140,7 @@ class CostController extends \BaseController {
     public function destroy($id) {
         $cost = Cost::find($id);
         $cost->delete();
-        return Redirect::to('admin/cost');
+        return Redirect::to('admin/cost')->with('success_message', 'El registro ha sido borrado correctamente.')->withInput();
     }
 
     /**

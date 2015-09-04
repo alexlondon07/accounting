@@ -26,6 +26,11 @@
             <div class="table-responsive">
                 @if (count($items) > 0)
                 <h4>{{$items->getTotal()}} resultados </h4>
+
+                <!--Mensajes-->
+                @include('messages')
+                <!--Fin Mensajes-->
+
                 <table class="table table-striped">
                     <thead>
                         <tr>

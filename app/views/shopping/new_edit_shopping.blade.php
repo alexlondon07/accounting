@@ -32,7 +32,7 @@
             <div class="form-group">
                 {{Form::label('date_shopping', 'Fecha', array('class' => 'control-label col-sm-2'))}}
                 <div class="col-sm-4">
-                    {{Form::text('date_shopping',null, array('class' => 'form-control'))}}
+                    {{Form::text('date_shopping',null, array('class' => 'form-control datepicker'))}}
                 </div>
             </div>
             <div class="form-group">
