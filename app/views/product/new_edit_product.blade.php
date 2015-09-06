@@ -19,9 +19,9 @@
             @endif
 
             @if (!empty($product))
-            <!--Mensajes de validationes-->
-            @include('messages-validations')
-            <!--Fin Mensajes de validationes-->
+            <!--Mensajes de validaciones-->
+            @include('alert.messages-validations')
+            <!--Fin Mensajes de validaciones-->
             <div class="form-group">
                 {{Form::label('category_id', 'Pertenence a', array('class' => 'control-label col-sm-2'))}}
                 <div class="col-sm-4">

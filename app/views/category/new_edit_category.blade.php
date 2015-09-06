@@ -17,11 +17,11 @@
             {{ Form::model($category, ['id' => 'form_category', 'route' => 'admin.category.store', 'role'=>'form', 'class'=>'form-horizontal']) }}
             @endif
             @endif
-            
+
             @if(!empty($category))
-            <!--Mensajes de validationes-->
-            @include('messages-validations')
-            <!--Fin Mensajes de validationes-->
+            <!--Mensajes de validaciones-->
+            @include('alert.messages-validations')
+            <!--Fin Mensajes de validaciones-->
             <div class="form-group">
                 {{Form::label('name', 'Nombre', array('class' => 'control-label col-sm-2'))}}
                 <div class="col-sm-4">

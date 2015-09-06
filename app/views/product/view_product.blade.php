@@ -27,9 +27,9 @@
           <h4>{{$items->getTotal()}} resultados </h4>
 
           <!--Mensajes-->
-              @include('messages')
+              @include('alert.messages-success')
           <!--Fin Mensajes-->
-          
+
           <table class="table table-striped">
             <thead>
               <tr>

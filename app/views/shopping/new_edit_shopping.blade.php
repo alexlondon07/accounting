@@ -22,11 +22,11 @@
             {{ Form::hidden('shopping_id', $shopping->id, array('id' => 'shopping_id')) }}
             {{ Form::hidden('deletable', 'true', array('id' => 'deletable')) }}
             {{ Form::hidden('editable', 'true', array('id' => 'editable')) }}
-            
 
-            <!--Mensajes de validationes-->
-            @include('messages-validations')
-            <!--Fin Mensajes de validationes-->
+
+            <!--Mensajes de validaciones-->
+            @include('alert.messages-validations')
+            <!--Fin Mensajes de validaciones-->
             <div class="form-group">
                 {{Form::label('description', 'Descripcion', array('class' => 'control-label col-sm-2'))}}
                 <div class="col-sm-4">
