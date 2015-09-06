@@ -19,18 +19,19 @@
             @endif
 
             @if (!empty($provider))
-            <div class="form-group @if ($errors->has('name')) has-error @endif">
+            <!--Mensajes de validationes-->
+            @include('messages-validations')
+            <!--Fin Mensajes de validationes-->
+            <div class="form-group">
                 {{Form::label('name', 'Nombre', array('class' => 'control-label col-sm-2'))}}
                 <div class="col-sm-4">
                     {{Form::text('name',null, array('class' => 'form-control'))}}
-                    @if ($errors->has('name')) <p class="help-block">{{ $errors->first('name') }}</p> @endif
                 </div>
             </div>
-            <div class="form-group @if ($errors->has('email')) has-error @endif">
+            <div class="form-group">
                 {{Form::label('email', 'Email', array('class' => 'control-label col-sm-2'))}}
                 <div class="col-sm-4">
                     {{Form::email('email',null, array('class' => 'form-control'))}}
-                    @if ($errors->has('email')) <p class="help-block">{{ $errors->first('email') }}</p> @endif
                 </div>
             </div>
             <div class="form-group">
@@ -39,11 +40,10 @@
                     {{Form::text('nit',null, array('class' => 'form-control'))}}
                 </div>
             </div>
-            <div class="form-group @if ($errors->has('telephone')) has-error @endif">
+            <div class="form-group">
                 {{Form::label('telephone', 'Telefono', array('class' => 'control-label col-sm-2'))}}
                 <div class="col-sm-4">
                     {{Form::text('telephone',null, array('class' => 'form-control'))}}
-                    @if ($errors->has('telephone')) <p class="help-block">{{ $errors->first('telephone') }}</p> @endif
                 </div>
             </div>
             <div class="form-group">

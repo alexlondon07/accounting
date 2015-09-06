@@ -20,6 +20,7 @@ var Shopping = {};
         var d = {};
         d.shopping_id = Shopping.shoppingId;
         Util.callAjax(d, rootUrl + 'ajax/get_product_data_table', 'POST', Shopping.loadDataTableSuccess);
+        $('.datepicker').datepicker();
     };
 
     /**

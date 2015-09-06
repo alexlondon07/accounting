@@ -11,6 +11,10 @@
 <link rel="stylesheet" type="text/css" href="{{ URL::to('/') }}/css/bootstrap/bootstrap.css?v={{ Util::version() }}" />
 <!-- Custom styles for this template -->
 <link rel="stylesheet" type="text/css" href="{{ URL::to('/') }}/css/bootstrap/dashboard.css?v={{ Util::version() }}" />
+
+<!-- css de bootstrap datepicker-->
+<link rel="stylesheet" type="text/css" href="{{ URL::to('/') }}/js/bootstrap/datepicker/css/datepicker.css?v={{ Util::version() }}" />
+
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
           <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -79,6 +83,8 @@
         <script type="text/javascript" src="{{ URL::to('js/bootstrap/bootstrap.min.js') }}?v={{ Util::version() }}"></script>
         <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
         <script type="text/javascript" src="{{ URL::to('/') }}/js/jquery/ie10-viewport-bug-workaround.js?v={{ Util::version() }}"></script>
+        <!-- js de bootstrap 3 datepicker-->
+        <script type="text/javascript" src="{{ URL::to('/') }}/js/bootstrap/datepicker/js/bootstrap-datepicker.js?v={{ Util::version() }}"></script>
         <script type="text/javascript">var rootUrl = "{{ URL::to('/') }}/";</script>
         <script type="text/javascript" src="{{ URL::to('/') }}/js/Util.js?v={{ Util::version() }}"></script>
         @yield('javascript_content')

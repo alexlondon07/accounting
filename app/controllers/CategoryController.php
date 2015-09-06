@@ -33,7 +33,7 @@ class CategoryController extends \BaseController {
      */
     public function store() {
         // se define la validacion de los campos
-        $rules = array('name' => 'required|max:60');
+        $rules = array('name' => 'required|max:60', 'enable'=>'in:SI,NO');
         // Se validan los datos ingresados segun las reglas definidas
         $validator = Validator::make(Input::all(), $rules);
         if ($validator->fails()) {
@@ -86,7 +86,7 @@ class CategoryController extends \BaseController {
      */
     public function update($id) {
         // se define la validacion de los campos
-        $rules = array('name' => 'required|max:60');
+        $rules = array('name' => 'required|max:60', 'enable'=>'in:SI,NO');
         // Se validan los datos ingresados segun las reglas definidas
         $validator = Validator::make(Input::all(), $rules);
         if ($validator->fails()) {

@@ -22,11 +22,15 @@
             {{ Form::hidden('shopping_id', $shopping->id, array('id' => 'shopping_id')) }}
             {{ Form::hidden('deletable', 'true', array('id' => 'deletable')) }}
             {{ Form::hidden('editable', 'true', array('id' => 'editable')) }}
-            <div class="form-group @if ($errors->has('description')) has-error @endif">
+            
+
+            <!--Mensajes de validationes-->
+            @include('messages-validations')
+            <!--Fin Mensajes de validationes-->
+            <div class="form-group">
                 {{Form::label('description', 'Descripcion', array('class' => 'control-label col-sm-2'))}}
                 <div class="col-sm-4">
                     {{Form::textarea('description',null, array('class' => 'form-control' , 'size' => '20x4'))}}
-                    @if ($errors->has('description')) <p class="help-block">{{ $errors->first('description') }}</p> @endif
                 </div>
             </div>
             <div class="form-group">

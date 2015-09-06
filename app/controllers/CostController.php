@@ -33,7 +33,7 @@ class CostController extends \BaseController {
      */
     public function store() {
         // se define la validacion de los campos
-        $rules = array('name' => 'required|max:60', 'type' => 'required', 'value' => 'required|numeric', 'description' => 'required|max:200');
+        $rules = array('name' => 'required|max:60', 'type' => 'required', 'value' => 'required|numeric', 'description' => 'required|max:200', 'enable'=>'in:SI,NO');
         // Se validan los datos ingresados segun las reglas definidas
         $validator = Validator::make(Input::all(), $rules);
         if ($validator->fails()) {
@@ -98,7 +98,7 @@ class CostController extends \BaseController {
      */
     public function update($id) {
         // se define la validacion de los campos
-        $rules = array('name' => 'required|max:60', 'type' => 'required', 'value' => 'required|numeric', 'description' => 'required|max:200');
+        $rules = array('name' => 'required|max:60', 'type' => 'required', 'value' => 'required|numeric', 'description' => 'required|max:200', 'enable'=>'in:SI,NO');
         // Se validan los datos ingresados segun las reglas definidas
         $validator = Validator::make(Input::all(), $rules);
         if ($validator->fails()) {

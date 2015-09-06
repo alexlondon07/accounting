@@ -40,7 +40,7 @@ class ProductController extends \BaseController {
      */
     public function store() {
         // se define la validacion de los campos
-        $rules = array('category_id' =>'array', 'name' => 'required|max:60', 'value'=>'numeric|required','cost'=>'numeric|required');
+        $rules = array('category_id' =>'array', 'name' => 'required|max:60', 'value'=>'numeric|required','cost'=>'numeric|required', 'enable'=>'in:SI,NO');
         // Se validan los datos ingresados segun las reglas definidas
         $validator = Validator::make(Input::all(), $rules);
         if ($validator->fails()) {
@@ -116,7 +116,7 @@ class ProductController extends \BaseController {
      */
     public function update($id) {
         // se define la validacion de los campos
-        $rules = array('name' => 'required|max:60', 'value'=>'numeric|required','cost'=>'numeric|required');
+        $rules = array('name' => 'required|max:60', 'value'=>'numeric|required','cost'=>'numeric|required', 'enable'=>'in:SI,NO');
         // Se validan los datos ingresados segun las reglas definidas
         $validator = Validator::make(Input::all(), $rules);
         if ($validator->fails()) {

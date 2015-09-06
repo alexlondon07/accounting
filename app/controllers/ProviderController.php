@@ -33,7 +33,7 @@ class ProviderController extends \BaseController {
      */
     public function store() {
         // se define la validacion de los campos
-        $rules = array('name' => 'required|max:60', 'email' => 'email|unique:provider', 'telephone' => 'numeric');
+        $rules = array('name' => 'required|max:60', 'email' => 'email|unique:provider', 'telephone' => 'numeric', 'enable'=>'in:SI,NO');
         // Se validan los datos ingresados segun las reglas definidas
         $validator = Validator::make(Input::all(), $rules);
         if ($validator->fails()) {
@@ -104,7 +104,7 @@ class ProviderController extends \BaseController {
      */
     public function update($id) {
         // se define la validacion de los campos
-        $rules = array('name' => 'required|max:60', 'email' => 'required|email|unique:provider,email,' . $id, 'telephone' => 'numeric');
+        $rules = array('name' => 'required|max:60', 'email' => 'required|email|unique:provider,email,' . $id, 'telephone' => 'numeric', 'enable'=>'in:SI,NO');
         // Se validan los datos ingresados segun las reglas definidas
         $validator = Validator::make(Input::all(), $rules);
         if ($validator->fails()) {
