@@ -32,30 +32,19 @@ class ClientController extends \BaseController {
      * @return Response
      */
     public function store() {
-        // se define la validacion de los campos
-        $rules = array('name' => 'required|max:60', 'telephone' => 'required|numeric', 'enable'=>'in:SI,NO');
-        // Se validan los datos ingresados segun las reglas definidas
-        $validator = Validator::make(Input::all(), $rules);
-        if ($validator->fails()) {
-            return Redirect::back()->withInput()->withErrors($validator);
-        }
-
         $client = new Client;
-        if (Input::get('name')) {
-            $client->name = Input::get('name');
+        $data = Input::all();
+        // Revisamos si la data es válido
+        if ($client->isValid($data)){
+            // Si la data es valida se la asignamos al client
+            $client->fill($data);
+            // Guardamos el client
+            $client->save();
+            return Redirect::to('admin/client')->with('success_message', 'El registro ha sido ingresado correctamente.')->withInput();
+        }else{
+            // En caso de error regresa a la acción create con los datos y los errores encontrados
+            return Redirect::back()->withInput()->withErrors($client->errors);
         }
-        if (Input::get('telephone')) {
-            $client->telephone = Input::get('telephone');
-        }
-        if (Input::get('address')) {
-            $client->address = Input::get('address');
-        }
-        if (Input::get('enable')) {
-            $client->enable = Input::get('enable');
-        }
-        $client->save();
-        return Redirect::to('admin/client')->with('success_message', 'El registro ha sido ingresado correctamente.')->withInput();
-
     }
 
     /**
@@ -136,31 +125,31 @@ class ClientController extends \BaseController {
             $search = Input::get('search');
             $arrparam = explode(' ', $search);
             $items = Client::whereNested(function($q) use ($arrparam) {
-                        $p = $arrparam[0];
+                $p = $arrparam[0];
+                $q->whereNested(function($q) use ($p) {
+                    $q->where('name', 'LIKE', '%' . $p . '%');
+                    $q->orwhere('telephone', 'LIKE', '%' . $p . '%');
+                    $q->orwhere('address', 'LIKE', '%' . $p . '%');
+                });
+                $c = count($arrparam);
+                if ($c > 1) {
+                            //para no repetir el primer elemento
+                            //foreach ($arrparam as $p) {
+                    for ($i = 1; $i < $c; $i++) {
+                        $p = $arrparam[$i];
                         $q->whereNested(function($q) use ($p) {
                             $q->where('name', 'LIKE', '%' . $p . '%');
                             $q->orwhere('telephone', 'LIKE', '%' . $p . '%');
                             $q->orwhere('address', 'LIKE', '%' . $p . '%');
-                        });
-                        $c = count($arrparam);
-                        if ($c > 1) {
-                            //para no repetir el primer elemento
-                            //foreach ($arrparam as $p) {
-                            for ($i = 1; $i < $c; $i++) {
-                                $p = $arrparam[$i];
-                                $q->whereNested(function($q) use ($p) {
-                                    $q->where('name', 'LIKE', '%' . $p . '%');
-                                    $q->orwhere('telephone', 'LIKE', '%' . $p . '%');
-                                    $q->orwhere('address', 'LIKE', '%' . $p . '%');
-                                }, 'OR');
-                            }
-                        }
-                    })
-                    ->whereNull('deleted_at')
-                    ->orderBy('name', 'ASC')
-                    ->paginate(10);
-            return View::make('client.view_client', compact('items', 'search'));
-        }
-    }
+                        }, 'OR');
+                    }
+                }
+            })
+->whereNull('deleted_at')
+->orderBy('name', 'ASC')
+->paginate(10);
+return View::make('client.view_client', compact('items', 'search'));
+}
+}
 
 }
