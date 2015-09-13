@@ -32,38 +32,19 @@ class CostController extends \BaseController {
      * @return Response
      */
     public function store() {
-        // se define la validacion de los campos
-        $rules = array('name' => 'required|max:60', 'type' => 'required', 'value' => 'required|numeric', 'description' => 'required|max:200', 'enable'=>'in:SI,NO');
-        // Se validan los datos ingresados segun las reglas definidas
-        $validator = Validator::make(Input::all(), $rules);
-        if ($validator->fails()) {
-            return Redirect::back()->withInput()->withErrors($validator);
-        }
-
         $cost = new Cost;
-        if (Input::get('name')) {
-            $cost->name = Input::get('name');
+        $data = Input::all();
+        // Revisamos si la data es válido
+        if ($cost->isValid($data)){
+            // Si la data es valida se la asignamos al cost
+            $cost->fill($data);
+            // Guardamos el cost
+            $cost->save();
+            return Redirect::to('admin/cost')->with('success_message', 'El registro ha sido ingresado correctamente.')->withInput();
+        }else{
+            // En caso de error regresa a la acción create con los datos y los errores encontrados
+            return Redirect::back()->withInput()->withErrors($cost->errors);
         }
-        if (Input::get('type')) {
-            $cost->type = Input::get('type');
-        }
-        if (Input::get('description')) {
-            $cost->description = Input::get('description');
-        }
-        if (Input::get('value')) {
-            $cost->value = Input::get('value');
-        }
-        if (Input::get('date_cost')) {
-            $cost->date_cost = Input::get('date_cost');
-        }
-        if (Input::get('resposible')) {
-            $cost->resposible = Input::get('resposible');
-        }
-        if (Input::get('enable')) {
-            $cost->enable = Input::get('enable');
-        }
-        $cost->save();
-        return Redirect::to('admin/cost')->with('success_message', 'El registro ha sido ingresado correctamente.')->withInput();
     }
 
     /**
@@ -97,38 +78,19 @@ class CostController extends \BaseController {
      * @return Response
      */
     public function update($id) {
-        // se define la validacion de los campos
-        $rules = array('name' => 'required|max:60', 'type' => 'required', 'value' => 'required|numeric', 'description' => 'required|max:200', 'enable'=>'in:SI,NO');
-        // Se validan los datos ingresados segun las reglas definidas
-        $validator = Validator::make(Input::all(), $rules);
-        if ($validator->fails()) {
-            return Redirect::back()->withInput()->withErrors($validator);
-        }
-
         $cost = Cost::find($id);
-        if (Input::get('name')) {
-            $cost->name = Input::get('name');
+        $data = Input::all();
+        // Revisamos si la data es válido
+        if ($cost->isValid($data)){
+            // Si la data es valida se la asignamos al cost
+            $cost->fill($data);
+            // Guardamos el cost
+            $cost->save();
+            return Redirect::to('admin/cost')->with('success_message', 'El registro ha sido modificado correctamente.')->withInput();
+        }else{
+            // En caso de error regresa a la acción create con los datos y los errores encontrados
+            return Redirect::back()->withInput()->withErrors($cost->errors);
         }
-        if (Input::get('type')) {
-            $cost->type = Input::get('type');
-        }
-        if (Input::get('description')) {
-            $cost->description = Input::get('description');
-        }
-        if (Input::get('value')) {
-            $cost->value = Input::get('value');
-        }
-        if (Input::get('date_cost')) {
-            $cost->date_cost = Input::get('date_cost');
-        }
-        if (Input::get('resposible')) {
-            $cost->resposible = Input::get('resposible');
-        }
-        if (Input::get('enable')) {
-            $cost->enable = Input::get('enable');
-        }
-        $cost->save();
-        return Redirect::to('admin/cost')->with('success_message', 'El registro ha sido modificado correctamente.')->withInput();
     }
 
     /**

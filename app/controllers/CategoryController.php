@@ -32,26 +32,19 @@ class CategoryController extends \BaseController {
      * @return Response
      */
     public function store() {
-        // se define la validacion de los campos
-        $rules = array('name' => 'required|max:60', 'enable'=>'in:SI,NO');
-        // Se validan los datos ingresados segun las reglas definidas
-        $validator = Validator::make(Input::all(), $rules);
-        if ($validator->fails()) {
-            return Redirect::back()->withInput()->withErrors($validator);
-        }
-
         $category = new Category;
-        if (Input::get('name')) {
-            $category->name = Input::get('name');
+        $data = Input::all();
+        // Revisamos si la data es válido
+        if ($category->isValid($data)){
+            // Si la data es valida se la asignamos al category
+            $category->fill($data);
+            // Guardamos el category
+            $category->save();
+            return Redirect::to('admin/category')->with('success_message', 'El registro ha sido ingresado correctamente.')->withInput();
+        }else{
+            // En caso de error regresa a la acción create con los datos y los errores encontrados
+            return Redirect::back()->withInput()->withErrors($category->errors);
         }
-        if (Input::get('description')) {
-            $category->description = Input::get('description');
-        }
-        if (Input::get('enable')) {
-            $category->enable = Input::get('enable');
-        }
-        $category->save();
-        return Redirect::to('admin/category')->with('success_message', 'El registro ha sido ingresado correctamente.')->withInput();
     }
 
     /**
@@ -85,26 +78,19 @@ class CategoryController extends \BaseController {
      * @return Response
      */
     public function update($id) {
-        // se define la validacion de los campos
-        $rules = array('name' => 'required|max:60', 'enable'=>'in:SI,NO');
-        // Se validan los datos ingresados segun las reglas definidas
-        $validator = Validator::make(Input::all(), $rules);
-        if ($validator->fails()) {
-            return Redirect::back()->withInput()->withErrors($validator);
-        }
-
         $category = Category::find($id);
-        if (Input::get('name')) {
-            $category->name = Input::get('name');
+        $data = Input::all();
+        // Revisamos si la data es válido
+        if ($category->isValid($data)){
+            // Si la data es valida se la asignamos al category
+            $category->fill($data);
+            // Guardamos el category
+            $category->save();
+            return Redirect::to('admin/category')->with('success_message', 'El registro ha sido modificado correctamente.')->withInput();
+        }else{
+            // En caso de error regresa a la acción create con los datos y los errores encontrados
+            return Redirect::back()->withInput()->withErrors($category->errors);
         }
-        if (Input::get('description')) {
-            $category->description = Input::get('description');
-        }
-        if (Input::get('enable')) {
-            $category->enable = Input::get('enable');
-        }
-        $category->save();
-        return Redirect::to('admin/category')->with('success_message', 'El registro ha sido modificado correctamente.')->withInput();
     }
 
     /**
@@ -120,7 +106,7 @@ class CategoryController extends \BaseController {
     }
 
     /**
-     * Metodo para hacer la busqueda de un cliente
+     * Metodo para hacer la busqueda de un categorye
      */
     public static function search() {
         $items = array();

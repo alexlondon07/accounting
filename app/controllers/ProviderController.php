@@ -32,44 +32,19 @@ class ProviderController extends \BaseController {
      * @return Response
      */
     public function store() {
-        // se define la validacion de los campos
-        $rules = array('name' => 'required|max:60', 'email' => 'email|unique:provider', 'telephone' => 'numeric', 'enable'=>'in:SI,NO');
-        // Se validan los datos ingresados segun las reglas definidas
-        $validator = Validator::make(Input::all(), $rules);
-        if ($validator->fails()) {
-            return Redirect::back()->withInput()->withErrors($validator);
-        }
-
         $provider = new Provider;
-        if (Input::get('name')) {
-            $provider->name = Input::get('name');
+        $data = Input::all();
+        // Revisamos si la data es válido
+        if ($provider->isValid($data)){
+            // Si la data es valida se la asignamos al provider
+            $provider->fill($data);
+            // Guardamos el provider
+            $provider->save();
+            return Redirect::to('admin/provider')->with('success_message', 'El registro ha sido ingresado correctamente.')->withInput();
+        }else{
+            // En caso de error regresa a la acción create con los datos y los errores encontrados
+            return Redirect::back()->withInput()->withErrors($provider->errors);
         }
-        if (Input::get('email')) {
-            $provider->email = Input::get('email');
-        }
-        if (Input::get('nit')) {
-            $provider->nit = Input::get('nit');
-        }
-        if (Input::get('telephone')) {
-            $provider->telephone = Input::get('telephone');
-        }
-        if (Input::get('country')) {
-            $provider->country = Input::get('country');
-        }
-        if (Input::get('department')) {
-            $provider->department = Input::get('department');
-        }
-        if (Input::get('city')) {
-            $provider->city = Input::get('city');
-        }
-        if (Input::get('address')) {
-            $provider->address = Input::get('address');
-        }
-        if (Input::get('enable')) {
-            $provider->enable = Input::get('enable');
-        }
-        $provider->save();
-        return Redirect::to('admin/provider')->with('success_message', 'El registro ha sido ingresado correctamente.')->withInput();
     }
 
     /**
@@ -103,44 +78,19 @@ class ProviderController extends \BaseController {
      * @return Response
      */
     public function update($id) {
-        // se define la validacion de los campos
-        $rules = array('name' => 'required|max:60', 'email' => 'required|email|unique:provider,email,' . $id, 'telephone' => 'numeric', 'enable'=>'in:SI,NO');
-        // Se validan los datos ingresados segun las reglas definidas
-        $validator = Validator::make(Input::all(), $rules);
-        if ($validator->fails()) {
-            return Redirect::back()->withInput()->withErrors($validator);
-        }
-
         $provider = Provider::find($id);
-        if (Input::get('name')) {
-            $provider->name = Input::get('name');
+        $data = Input::all();
+        // Revisamos si la data es válido
+        if ($provider->isValid($data)){
+            // Si la data es valida se la asignamos al provider
+            $provider->fill($data);
+            // Guardamos el provider
+            $provider->save();
+            return Redirect::to('admin/provider')->with('success_message', 'El registro ha sido modificado correctamente.')->withInput();
+        }else{
+            // En caso de error regresa a la acción create con los datos y los errores encontrados
+            return Redirect::back()->withInput()->withErrors($provider->errors);
         }
-        if (Input::get('email')) {
-            $provider->email = Input::get('email');
-        }
-        if (Input::get('nit')) {
-            $provider->nit = Input::get('nit');
-        }
-        if (Input::get('telephone')) {
-            $provider->telephone = Input::get('telephone');
-        }
-        if (Input::get('country')) {
-            $provider->country = Input::get('country');
-        }
-        if (Input::get('department')) {
-            $provider->department = Input::get('department');
-        }
-        if (Input::get('city')) {
-            $provider->city = Input::get('city');
-        }
-        if (Input::get('address')) {
-            $provider->address = Input::get('address');
-        }
-        if (Input::get('enable')) {
-            $provider->enable = Input::get('enable');
-        }
-        $provider->save();
-        return Redirect::to('admin/provider')->with('success_message', 'El registro ha sido modificado correctamente.')->withInput();
     }
 
     /**
