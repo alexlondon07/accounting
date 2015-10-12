@@ -20,6 +20,7 @@ var Shopping = {};
         var d = {};
         d.shopping_id = Shopping.shoppingId;
         Util.callAjax(d, rootUrl + 'ajax/get_product_data_table', 'POST', Shopping.loadDataTableSuccess);
+        //Cargamos datepicker a los que tenga dicha clase , para que despliege el calendario
         $('.datepicker').datepicker();
     };
 
@@ -200,6 +201,7 @@ var Shopping = {};
         tableObject.elements = arr;
         document.getElementById(inputId).value = JSON.stringify(tableObject);
     };
+
     /**
      * Metodo que inicializa el modulo
      */
@@ -207,6 +209,12 @@ var Shopping = {};
         Shopping.shoppingId = $('#shopping_id').val();
         Shopping.divProduct = 'div_products';
         Shopping.loadDataTable();//Llamamos la funcion para cargar los datos la primera fila
+
+        $('#form_shopping').submit(function(event) {
+            //event.preventDefault();
+            Shopping.tableToObject(Shopping.divProduct, 'table_products');
+            return true;
+        });
     };
 
 })();

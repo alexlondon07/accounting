@@ -57,6 +57,19 @@ class ShoppingController extends \BaseController {
             $shopping->enable = Input::get('enable');
         }
         $shopping->save();
+         //se guardan las relaciones con prodctos
+        if (Input::get('table_products')) {
+            $table = json_decode(Input::get('table_products'));
+            foreach ($table->elements as $value) {
+                $arrids = $shopping->products()->getRelatedIds();
+                if (in_array($value->product_id, $arrids)) {
+                    $shopping->products()->updateExistingPivot($value->product_id, array('quantity' => $value->quantity, 'cost'=>$value->cost));
+                } else {
+                    $shopping->products()->attach([$value->product_id => ['quantity' => $value->quantity,  'cost'=>$value->cost]]);
+                }
+            }
+        }
+        $shopping->save();
         return Redirect::to('admin/shopping');
 	}
 
@@ -144,7 +157,7 @@ class ShoppingController extends \BaseController {
         if (Input::get('shopping_id')) {
             $shopping_id = Input::get('shopping_id');
             $shopping = Shopping::find($shopping_id);
-            $shopping->references;
+            $shopping->products;
         }
 		$product = Product::all();
         $arrjson = array('valid' => true, 'shopping' => $shopping, 'product' => $product);

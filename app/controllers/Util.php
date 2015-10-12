@@ -12,7 +12,7 @@ class Util {
      * @var String
      */
     public static function version (){
-         return '20150610184130';
+         return '20150824';
     }
     
     /**

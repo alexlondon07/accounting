@@ -17,4 +17,16 @@ class Shopping extends Eloquent {
      */
     protected $table = 'shopping';
 
+    /**
+     * Relacion, una compra puede tener muchos productos
+     * @return Relation
+     */
+    public function products() {
+        return $this->belongsToMany('Product', 'shopping_x_product')
+                        ->withPivot('quantity', 'cost')
+                        ->withTimestamps()
+                        ->whereNull('shopping_x_product.deleted_at')
+                        ->orderBy('quantity', 'ASC');
+    }
+
 }
