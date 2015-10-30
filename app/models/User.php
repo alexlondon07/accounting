@@ -40,6 +40,9 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
         return in_array($check, array_fetch($this->roles->toArray(), 'code'));
     }
 
+    public function attachment() {
+        return $this->hasMany('Attachment');
+    }
     /**
      * Relacion, un cliente puede pertenecer a un cliente
      * @return Relation

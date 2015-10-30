@@ -16,6 +16,9 @@
     Route::post('login', 'UserController@doLogin');
     Route::any('logout', 'UserController@doLogout');
 
+    //Rutas permitidas SIN autenticacion
+    Route::get('attachment/get/{action}/{id}/{key}', array('uses' => 'AttachmentController@getAttachment'));
+
     Route::group(array('prefix' => 'admin', 'before' => 'auth'), function() {
 
               Route::get('/', 'HomeController@showWelcome');

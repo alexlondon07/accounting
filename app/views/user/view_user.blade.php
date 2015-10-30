@@ -34,6 +34,7 @@
                             <th>Usuario</th>
                             <th>Email</th>
                             <th>Identificación</th>
+                            <th>Identificación</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -60,6 +61,16 @@
                             <td>{{ $item->username }}</td>
                             <td>{{ $item->email }}</td>
                             <td>{{ $item->identification }}</td>
+                            <td>
+                                @if(count($item->attachment) > 0)
+                                <a href="{{AttachmentController::getAttachmentURL($item->attachment[0]->id, 'download')}}" target="_blank" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-download-alt "></span>&nbsp;&nbsp;
+                                    <!--{{ $item->attachment[0]->name }}-->Descargar
+                                </a><br>
+                                <a href="{{AttachmentController::getAttachmentURL($item->attachment[0]->id)}}" target="_blank" >
+                                    <img src="{{AttachmentController::getAttachmentURL($item->attachment[0]->id)}}" style="max-height: 50px"/>
+                                </a>
+                                @endif
+                            </td>
                         </tr>
                         @endforeach
                     </tbody>

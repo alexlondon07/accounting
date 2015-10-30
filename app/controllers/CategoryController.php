@@ -123,8 +123,6 @@ class CategoryController extends \BaseController {
                         });
                         $c = count($arrparam);
                         if ($c > 1) {
-                            //para no repetir el primer elemento
-                            //foreach ($arrparam as $p) {
                             for ($i = 1; $i < $c; $i++) {
                                 $p = $arrparam[$i];
                                 $q->whereNested(function($q) use ($p) {

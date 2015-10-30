@@ -70,6 +70,16 @@ class UserController extends \BaseController {
             $user->roles()->sync(User::makeProfile($profile));
             $user->save();
         }
+        //Imagen asociada
+        if (Input::hasFile('file')) {
+            $f = Input::file('file');
+            if ($f) {
+                $att = new Attachment;
+                $att->user_id = $user->id;
+                $r = array();
+                $r = AttachmentController::uploadAttachment($f, $att);
+            }
+        }
         return Redirect::to('admin/user');
     }
 
@@ -140,6 +150,17 @@ class UserController extends \BaseController {
             $profile = Input::get('profile');
             $user->roles()->sync(User::makeProfile($profile));
         }
+        //Imagen relacionada
+        if (Input::hasFile('file')) {
+            AttachmentController::destroyAllBy('user_id', $user->id);
+            $f = Input::file('file');
+            if ($f) {
+                $att = new Attachment;
+                $att->user_id = $user->id;
+                $r = array();
+                $r = AttachmentController::uploadAttachment($f, $att);
+            }
+        }
         $user->save();
         return Redirect::to('admin/user');
     }
@@ -153,6 +174,8 @@ class UserController extends \BaseController {
     public function destroy($id) {
         $user = User::find($id);
         $user->delete();
+        //Eliminamos imagen asociada de usuario
+        AttachmentController::destroyAllBy('user_id', $user->id);
         return Redirect::to('admin/user');
     }
 
