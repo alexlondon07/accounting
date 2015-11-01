@@ -81,6 +81,11 @@
         <h3 class="panel-title">Detalles Compra</h3>
     </div>
     <div class="panel-body">
+
+        {{ Form::hidden('shopping_id', $shopping->id, array('id' => 'shopping_id')) }}
+        {{ Form::hidden('deletable', 'false', array('id' => 'deletable')) }}
+        {{ Form::hidden('editable', 'false', array('id' => 'editable')) }}
+
         {{ Form::open(array('role'=>'form', 'class'=>'form-horizontal'))}}
         @if(!empty($shopping))
         <div class="form-group">
@@ -106,6 +111,13 @@
             <div class="col-sm-4">
                 {{ Form::select('enable',array('SI'=>'SI','NO'=>'NO'), $shopping->enable, array('class'=>'form-control','disabled' => 'true')) }}
             </div>
+        </div>
+        <div class="form-group">
+                {{Form::label('table_products', 'Productos', array('class' => 'control-label col-sm-2'))}}
+                <div class="col-sm-4">
+                    <input type="hidden" name="table_products" id="table_products"/>
+                    <div id="div_products"></div>
+                </div>
         </div>
         @else
         <p class="">No existe información para éste costo</p>

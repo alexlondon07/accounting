@@ -34,7 +34,6 @@ class ShoppingController extends \BaseController {
 	 */
 	public function store()
 	{
-
 		// se define la validacion de los campos
         $rules = array('description' => 'required|max:200', 'date_shopping'=>'required', 'enable'=>'in:SI,NO');
         // Se validan los datos ingresados segun las reglas definidas
@@ -57,11 +56,8 @@ class ShoppingController extends \BaseController {
             $shopping->enable = Input::get('enable');
         }
         $shopping->save();
-         //se guardan las relaciones con prodctos
-         //
-         //dd(Input::get('table_products'));
-         //exit();
-         $table_products='';
+        //se guardan las relaciones con prodctos
+        $table_products='';
         if (Input::get('table_products')) {
             $table_products = json_decode(Input::get('table_products'));
             foreach ($table_products->elements as $value) {
@@ -72,8 +68,6 @@ class ShoppingController extends \BaseController {
                     $shopping->products()->attach([$value->product_id => ['quantity' => $value->quantity,  'cost'=>$value->cost]]);
                 }
             }
-
-
         }
         $shopping->save();
         return Redirect::to('admin/shopping');
@@ -139,6 +133,21 @@ class ShoppingController extends \BaseController {
             $shopping->enable = Input::get('enable');
         }
         $shopping->save();
+        //se guardan las relaciones con productos
+        $table_products='';
+        if (Input::get('table_products')) {
+            $table_products = json_decode(Input::get('table_products'));
+            foreach ($table_products->elements as $value) {
+                $arrids = $shopping->products()->getRelatedIds();
+                if (in_array($value->product_id, $arrids)) {
+                    $shopping->products()->updateExistingPivot($value->product_id, array('quantity' => $value->quantity, 'cost'=>$value->cost));
+                } else {
+                    $shopping->products()->attach([$value->product_id => ['quantity' => $value->quantity,  'cost'=>$value->cost]]);
+                }
+            }
+        }
+
+        $shopping->save();
         return Redirect::to('admin/shopping');
 
 	}
@@ -157,6 +166,11 @@ class ShoppingController extends \BaseController {
         return Redirect::to('admin/shopping');
 	}
 
+    /**
+     * Metodo para traer los productos relacionados de una compra
+     * [getProductDataTable description]
+     * @return [type] [description]
+     */
     public function getProductDataTable(){
         $arrjson = array();
         $shopping = null;
@@ -169,6 +183,4 @@ class ShoppingController extends \BaseController {
         $arrjson = array('valid' => true, 'shopping' => $shopping, 'product' => $product);
         return Response::json($arrjson);
     }
-
-
 }

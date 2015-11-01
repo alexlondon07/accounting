@@ -10,7 +10,7 @@ var Shopping = {};
 (function() {
     /** variable para almacenar el nombre del contenedor de la tabla de formulas */
     Shopping.countTableElement = 0;
-    Shopping.ShoppingId = '';
+    Shopping.shoppingId = '';
 
 
     /**
@@ -18,7 +18,7 @@ var Shopping = {};
      */
     Shopping.loadDataTable = function() {
         var d = {};
-        d.Shopping_id = Shopping.ShoppingId;
+        d.shopping_id = Shopping.shoppingId;
         Util.callAjax(d, rootUrl + 'ajax/get_product_data_table', 'POST', Shopping.loadDataTableSuccess);
         //Cargamos datepicker a los que tenga dicha clase , para que despliege el calendario
         $('.datepicker').datepicker();
@@ -33,7 +33,7 @@ var Shopping = {};
             Shopping.dataProduct = data.product;
 
             Shopping.createTable(Shopping.divProduct, ['Item', 'Cantidad', 'Producto', 'Costo'], Shopping.addRowProduct);
-            if (Shopping.ShoppingId != '') {
+            if (Shopping.shoppingId != '') {
                 Shopping.loadPreviousTable();
             } else {
                 Shopping.addRowProduct();
@@ -200,9 +200,6 @@ var Shopping = {};
         tableObject.elements = arr;
         document.getElementById(inputId).value = JSON.stringify(tableObject);
     };
-
-
-
 
     /**
      * Metodo que inicializa el modulo
