@@ -182,6 +182,20 @@ var Util = {};
         $('#' + id).next().html('');
       }
   };
+
+    /**
+     * Metodo para capturar el atributo value de un elemento
+     * @param {String} id
+     * @returns {document.getElementById.value}
+     */
+    Util.getValue = function(id) {
+        var e = document.getElementById(id);
+        if (e != null && e != undefined) {
+            return e.value;
+        }
+        return null;
+    };
+
   /**
 	 * Metodo que inicializa el modulo
 	 */

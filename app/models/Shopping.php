@@ -18,7 +18,7 @@ class Shopping extends Eloquent {
     protected $table = 'shopping';
 
     /**
-     * Relacion, una compra puede tener muchos productos
+     * Relacion, un PRODUCTO puede tener muchos COMPRAS RELACIONADAS
      * @return Relation
      */
     public function products() {

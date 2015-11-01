@@ -1,6 +1,6 @@
 /** Modulo que contiene las funciones y variables necesarias para el modulo tinta mezcla
  * @author Alexander Londoño
- * @since 2015-07-24
+ * @since 2015-11-01
  */
 var Shopping = {};
 
@@ -10,31 +10,30 @@ var Shopping = {};
 (function() {
     /** variable para almacenar el nombre del contenedor de la tabla de formulas */
     Shopping.countTableElement = 0;
-    Shopping.shoppingId = '';
+    Shopping.ShoppingId = '';
 
 
     /**
-     * Metodo para cargar la tabla de productos
+     * Metodo para cargar la tabla de formulas de una mezcla
      */
     Shopping.loadDataTable = function() {
         var d = {};
-        d.shopping_id = Shopping.shoppingId;
+        d.Shopping_id = Shopping.ShoppingId;
         Util.callAjax(d, rootUrl + 'ajax/get_product_data_table', 'POST', Shopping.loadDataTableSuccess);
         //Cargamos datepicker a los que tenga dicha clase , para que despliege el calendario
         $('.datepicker').datepicker();
     };
 
     /**
-     * Metodo Handler la ejecucion exitosa de metodo ajax en Shopping.loadShopingTable
+     * Metodo Handler la ejecucion exitosa de metodo ajax en Shopping.loadFormulaTable
      */
     Shopping.loadDataTableSuccess = function(data) {
         if (data.valid) {
-            Shopping.dataShopping = data.Shopping;
+            Shopping.dataShopping = data.shopping;
             Shopping.dataProduct = data.product;
 
             Shopping.createTable(Shopping.divProduct, ['Item', 'Cantidad', 'Producto', 'Costo'], Shopping.addRowProduct);
-
-            if (Shopping.shoppingId != '') {
+            if (Shopping.ShoppingId != '') {
                 Shopping.loadPreviousTable();
             } else {
                 Shopping.addRowProduct();
@@ -202,14 +201,16 @@ var Shopping = {};
         document.getElementById(inputId).value = JSON.stringify(tableObject);
     };
 
+
+
+
     /**
      * Metodo que inicializa el modulo
      */
     Shopping.initialize = function() {
         Shopping.shoppingId = $('#shopping_id').val();
         Shopping.divProduct = 'div_products';
-        Shopping.loadDataTable();//Llamamos la funcion para cargar los datos la primera fila
-
+        Shopping.loadDataTable();
         $('#form_shopping').submit(function(event) {
             //event.preventDefault();
             Shopping.tableToObject(Shopping.divProduct, 'table_products');

@@ -26,4 +26,17 @@ class Product extends Eloquent {
         public function category() {
             return $this->has_many('Category');
         }
+
+
+
+    /**
+     * Relacion, una compra puede tener muchos productos
+     * @return Relation
+     */
+    public function shoppings() {
+        return $this->belongsToMany('Shopping', 'shopping_x_product')
+                        ->withPivot('quantity', 'cost')
+                        ->withTimestamps()
+                        ->whereNull('shopping_x_product.deleted_at');
+    }
 }
