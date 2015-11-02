@@ -16,9 +16,8 @@
     Route::post('login', 'UserController@doLogin');
     Route::any('logout', 'UserController@doLogout');
 
-    //Rutas permitidas SIN autenticacion
+    //Rutas permitidas SIN autenticacion -- VER IMAGEN
     Route::get('attachment/get/{action}/{id}/{key}', array('uses' => 'AttachmentController@getAttachment'));
-
     Route::group(array('prefix' => 'admin', 'before' => 'auth'), function() {
 
               Route::get('/', 'HomeController@showWelcome');
@@ -43,6 +42,7 @@
   Route::group(array('prefix' => 'ajax'), function() {
     Route::any('usernameexist', 'UserController@userNameExist');
     Route::any('get_product_data_table', 'ShoppingController@getProductDataTable');
+    //Route::any('delete_product_data_table', 'ShoppingController@deleteProductDataTable');
     // llamados ajax que requieren autenticacion
     Route::group(array('before' => 'auth'), function() {
         // FUNCIONES QUE REQUIEREN AUTENTICACION

@@ -53,6 +53,31 @@ var Shopping = {};
     Shopping.removeRowShoppingTable = function(d) {
         console.log(d);
     };
+
+
+    /**
+     * Metodo para eliminar un producto de la tabla de productos AJAX
+     */
+    // Shopping.removeRowShoppingTable = function(resourceId) {
+    //     var d = {};
+    //     d.shopping_id = Shopping.shoppingId;
+    //     //d.product_id = $('#tr_product_id_' + resourceId).val();
+    //     d.product_id = $('#tr_div_products_product_id_' + resourceId).val();
+    //     if (parseInt(d.shopping_id) > 0 ){
+    //         Util.callAjax(d, rootUrl + 'ajax/delete_product_data_table', 'POST', Shopping.removeRowShoppingTableSuccess);
+    //     }
+    // };
+
+    // /**
+    //  * Metodo Handler la ejecucion exitosa de metodo AJAX en Shopping.removeRowShoppingTable
+    //  */
+    // Shopping.removeRowShoppingTableSuccess = function(data) {
+    //     if (data.valid) {
+    //         console.log('Fila eliminada');
+    //     }else{
+    //         console.log('NO se fue  eliminada la Fila');
+    //     }
+    // };
     /**
      * Metodo que agrega una fila a la tabla de Productos
      */

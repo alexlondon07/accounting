@@ -132,7 +132,10 @@ class ShoppingController extends \BaseController {
         if (Input::get('enable')) {
             $shopping->enable = Input::get('enable');
         }
-        $shopping->save();
+
+        //Eliminamos los datos de la tabla pivote shopping_x_product, metodo detach
+        $shopping->products()->detach();
+
         //se guardan las relaciones con productos
         $table_products='';
         if (Input::get('table_products')) {
@@ -146,10 +149,8 @@ class ShoppingController extends \BaseController {
                 }
             }
         }
-
         $shopping->save();
         return Redirect::to('admin/shopping');
-
 	}
 
 
@@ -181,6 +182,24 @@ class ShoppingController extends \BaseController {
         }
 		$product = Product::all();
         $arrjson = array('valid' => true, 'shopping' => $shopping, 'product' => $product);
+        return Response::json($arrjson);
+    }
+
+
+    /**
+     * Metodo para elimnar un producto con AJAX
+     * [deleteProductDataTable description]
+     * @return [type] [description]
+     */
+    public function deleteProductDataTable() {
+        $shopping_Id = intval(Input::get('shopping_id'));
+        $product_Id = intval(Input::get('product_id'));
+        if ($shopping_Id > 0 && $product_Id > 0) {
+            DB::table('shopping_x_product')->where('product_id', $product_Id)->where('shopping_id', $shopping_Id)->whereNull('shopping_x_product.deleted_at')->update(array('deleted_at' => DB::raw('NOW()')));
+            $arrjson = array('valid' => true);
+        } else {
+            $arrjson = array('valid' => false, 'error' => 'Faltan datos');
+        }
         return Response::json($arrjson);
     }
 }
