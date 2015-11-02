@@ -8,13 +8,12 @@ var Shopping = {};
  * Funcion que define variables y funciones
  */
 (function() {
-    /** variable para almacenar el nombre del contenedor de la tabla de formulas */
+    /** variable para almacenar el nombre del contenedor de la tabla de productos */
     Shopping.countTableElement = 0;
     Shopping.shoppingId = '';
 
-
     /**
-     * Metodo para cargar la tabla de formulas de una mezcla
+     * Metodo para cargar la tabla de productos 
      */
     Shopping.loadDataTable = function() {
         var d = {};
@@ -25,13 +24,13 @@ var Shopping = {};
     };
 
     /**
-     * Metodo Handler la ejecucion exitosa de metodo ajax en Shopping.loadFormulaTable
+     * Metodo Handler la ejecucion exitosa de metodo ajax en Shopping.loadDataTable
      */
     Shopping.loadDataTableSuccess = function(data) {
         if (data.valid) {
             Shopping.dataShopping = data.shopping;
             Shopping.dataProduct = data.product;
-
+            //se muestras los nombres de las columnas de la tabla dinamica
             Shopping.createTable(Shopping.divProduct, ['Item', 'Cantidad', 'Producto', 'Costo'], Shopping.addRowProduct);
             if (Shopping.shoppingId != '') {
                 Shopping.loadPreviousTable();
@@ -50,6 +49,12 @@ var Shopping = {};
         }
     };
 
+    /**
+     * Metodo para eliminar las filas de la tabla dinamica
+     * [removeRowShoppingTable description]
+     * @param  {[type]} d [description]
+     * @return {[type]}   [description]
+     */
     Shopping.removeRowShoppingTable = function(d) {
         console.log(d);
     };
@@ -97,6 +102,7 @@ var Shopping = {};
             //columna de acciones
             td = document.createElement('td');
             td.setAttribute('class', 'table_input_td');
+            //columna de la accion eliminar
             if (j == 0) {
                 input = document.createElement('a');
                 if (deletable == 'true') {
